@@ -80,8 +80,8 @@ author: seiji
 <div class="fig">
 <div class="row c2">
 <div class="card">
-<div class="t">1. ターミナルとエディタ</div>
-<div class="d">道具の役割を分けて、使いどころを選ぶ</div>
+<div class="t">1. 開発の道具は3つに分かれる</div>
+<div class="d">エディタ、ターミナル、CLIエージェント</div>
 </div>
 <div class="card on">
 <div class="t">2. AIを複数体動かす</div>
@@ -93,17 +93,17 @@ author: seiji
 ---
 
 <!-- _class: chapter -->
-<!-- header: '1. ターミナルとエディタ' -->
+<!-- header: '1. 開発の道具は3つに分かれる' -->
 
 <div class="n">CHAPTER 1</div>
 
-# ターミナルとエディタ
+# 開発の道具は3つに分かれる
 
-違いは、画面の色ではなく主役にする作業
+エディタ、ターミナル、CLIエージェント。役割が違う
 
 ---
 
-# 道具は3つの層に分けると混ざらない
+# 道具は3つに分かれる。混ぜないこと
 
 <div class="fig">
 <div class="layer-stack">
@@ -114,12 +114,12 @@ author: seiji
 </div>
 <div class="layer on">
 <span class="layer-no">2</span>
-<div><b>ターミナル環境</b><small>CLIセッションを表示、整理する</small></div>
+<div><b>ターミナル</b><small>文字で命令し、結果を見る</small></div>
 <div class="logos"><span class="ico ico-lg i-macterminal"></span><span class="ico ico-lg i-winterminal"></span><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span><span class="ico ico-lg i-herdr"></span></div>
 </div>
 <div class="layer">
 <span class="layer-no">3</span>
-<div><b>CLIエージェント</b><small>コードを調査、変更、検証する</small></div>
+<div><b>CLIエージェント</b><small>指示を受けて、調べて直して確かめる</small></div>
 <div class="logos"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
 </div>
 </div>
@@ -135,35 +135,7 @@ author: seiji
 
 ---
 
-# ターミナルは、コマンドの入出力を映す窓
-
-<div class="fig">
-<div class="scene-grid">
-<div class="terminal-screen">
-<div class="terminal-bar">Terminal</div>
-<code><span class="prompt">$</span> npm test</code>
-<code class="output">✓ 24 tests passed</code>
-<code><span class="prompt">$</span> git status</code>
-<code class="output">nothing to commit</code>
-</div>
-<div class="numbered">
-<div><b>1. ターミナル</b><span>文字を受け取り、結果を描画する</span></div>
-<div><b>2. シェル</b><span>zshやbashがコマンドを解釈する</span></div>
-<div><b>3. プログラム</b><span>gitやnpm、AIエージェントが動く</span></div>
-</div>
-</div>
-<p class="cap">黒い画面の中にも、別々の役割がある</p>
-</div>
-
-<!--
-[Sources]
-- MIT Missing Semester, The Shell: https://missing.csail.mit.edu/2020/course-shell/
-- Video, 4:12–6:22: https://www.youtube.com/watch?v=Z56Jmr9Z34Q
--->
-
----
-
-# エディタは、ファイルを読んで書く作業台
+# ① エディタは、ファイルを読んで書く作業台
 
 <div class="fig">
 <div class="scene-grid">
@@ -192,7 +164,64 @@ author: seiji
 
 ---
 
-# ターミナルとエディタは同時に使える
+# ② ターミナルは、コマンドの入出力を映す窓
+
+<div class="fig">
+<div class="scene-grid">
+<div class="terminal-screen">
+<div class="terminal-bar">Terminal</div>
+<code><span class="prompt">$</span> npm test</code>
+<code class="output">✓ 24 tests passed</code>
+<code><span class="prompt">$</span> git status</code>
+<code class="output">nothing to commit</code>
+</div>
+<div class="numbered">
+<div><b>1. ターミナル</b><span>文字を受け取り、結果を描画する</span></div>
+<div><b>2. シェル</b><span>zshやbashがコマンドを解釈する</span></div>
+<div><b>3. プログラム</b><span>gitやnpm、AIエージェントが動く</span></div>
+</div>
+</div>
+<p class="cap">黒い画面の中にも、別々の役割がある</p>
+</div>
+
+<!--
+[Sources]
+- MIT Missing Semester, The Shell: https://missing.csail.mit.edu/2020/course-shell/
+- Video, 4:12–6:22: https://www.youtube.com/watch?v=Z56Jmr9Z34Q
+-->
+
+---
+
+# ③ CLIエージェントは、指示を受けて手を動かす
+
+<div class="fig">
+<div class="scene-grid">
+<div class="terminal-screen">
+<div class="terminal-bar">Claude Code</div>
+<code><span class="prompt">&gt;</span> ログイン画面のバグを直して</code>
+<code class="output">Read  src/Login.tsx</code>
+<code class="output">Edit  src/Login.tsx</code>
+<code class="output">Run   npm test  → 24 passed</code>
+<code class="output">差分を確認してください</code>
+</div>
+<div class="numbered">
+<div><b>1. 調べる</b><span>どのファイルが関係するかを自分で探す</span></div>
+<div><b>2. 直す</b><span>ファイルを書き換える</span></div>
+<div><b>3. 確かめる</b><span>コマンドを実行して結果を見る</span></div>
+</div>
+</div>
+<div class="logos" style="margin-top:20px"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
+<p class="cap">人が見るのは、権限・実行したコマンド・差分・テスト結果。停止したことと、完成したことは別</p>
+</div>
+
+<!--
+[Sources]
+- https://code.claude.com/docs/en/overview
+- https://developers.openai.com/codex/cli/
+-->
+---
+
+# 3つは、同時に使ってよい
 
 <div class="fig">
 <div class="pair">
@@ -244,7 +273,7 @@ author: seiji
 
 ---
 
-# ターミナルまわりは、2つの層に分かれる
+# ターミナルには2種類ある
 
 <div class="fig">
 <div class="rows">
@@ -263,7 +292,7 @@ author: seiji
 <span class="ico ico-lg i-cmux"></span>
 <span class="ico ico-lg i-herdr"></span>
 </div>
-<div class="t">複数のAIを束ねる道具</div>
+<div class="t">束ねる道具</div>
 <div class="d">どれが動いていて、どれが入力待ちかを一覧で見る</div>
 </div>
 </div>
@@ -280,54 +309,6 @@ author: seiji
 </div>
 <p class="cap">今日は名前だけ。実際に触るのは、この次に出てくるCLIエージェント</p>
 </div>
-
----
-
-# Claude CodeとCodexは、ターミナルの中で動く
-
-<div class="fig">
-<div class="row c2">
-<div class="card">
-<div class="logos"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
-<div class="t">できること</div>
-<div class="d">リポジトリを調査し、編集し、<br>コマンドで検証する</div>
-</div>
-<div class="card on">
-<span class="gi lg g-doc dark"></span>
-<div class="t">人間が見ること</div>
-<div class="d">権限、実行コマンド、差分、<br>テスト結果、残ったリスク</div>
-</div>
-</div>
-<p class="cap">エージェントの停止と、成果物の完成は別</p>
-</div>
-
-<!--
-[Sources]
-- https://code.claude.com/docs/en/overview
-- https://developers.openai.com/codex/cli/
--->
-
----
-
-# cmuxなら、CLIセッションを一画面で追える
-
-<div class="fig">
-<div class="win three">
-<div class="bar"><i></i><i></i><i></i><span class="ico i-cmux"></span><b>cmux</b></div>
-<div class="body" style="height:300px">
-<div class="p"><div class="h">セッション</div><div class="stat"><i class="run"></i>プロジェクトA／実行中</div><div class="stat"><i class="wait"></i>プロジェクトB／入力待ち</div><div class="stat"><i class="run"></i>プロジェクトC／実行中</div><div class="stat"><i class="done"></i>プロジェクトD／停止</div></div>
-<div class="p dark"><div class="ln d l"></div><div class="ln dg m"></div><div class="ln d s"></div><div class="ln d l"></div><div class="ln dg m"></div></div>
-<div class="p"><div class="h">ブラウザ／別ペイン</div><div class="ln m"></div><div class="ln s"></div><div class="ln b l"></div><div class="ln s"></div></div>
-</div>
-</div>
-<p class="cap">通知と一覧は「戻る場所」を教える。成果の正しさは差分とテストで確かめる</p>
-</div>
-
-<!--
-[Sources]
-- https://github.com/manaflow-ai/cmux
-- https://www.youtube.com/watch?v=i-WxO5YUTOs
--->
 
 ---
 
@@ -433,6 +414,28 @@ author: seiji
 - https://github.com/manaflow-ai/cmux
 - https://herdr.dev/docs/
 - https://learn.chatgpt.com/docs/long-running-work
+-->
+
+---
+
+# cmuxなら、CLIセッションを一画面で追える
+
+<div class="fig">
+<div class="win three">
+<div class="bar"><i></i><i></i><i></i><span class="ico i-cmux"></span><b>cmux</b></div>
+<div class="body" style="height:300px">
+<div class="p"><div class="h">セッション</div><div class="stat"><i class="run"></i>プロジェクトA／実行中</div><div class="stat"><i class="wait"></i>プロジェクトB／入力待ち</div><div class="stat"><i class="run"></i>プロジェクトC／実行中</div><div class="stat"><i class="done"></i>プロジェクトD／停止</div></div>
+<div class="p dark"><div class="ln d l"></div><div class="ln dg m"></div><div class="ln d s"></div><div class="ln d l"></div><div class="ln dg m"></div></div>
+<div class="p"><div class="h">ブラウザ／別ペイン</div><div class="ln m"></div><div class="ln s"></div><div class="ln b l"></div><div class="ln s"></div></div>
+</div>
+</div>
+<p class="cap">通知と一覧は「戻る場所」を教える。成果の正しさは差分とテストで確かめる</p>
+</div>
+
+<!--
+[Sources]
+- https://github.com/manaflow-ai/cmux
+- https://www.youtube.com/watch?v=i-WxO5YUTOs
 -->
 
 ---
