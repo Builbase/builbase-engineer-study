@@ -46,6 +46,9 @@ marp slides.md -o build/slides.pdf --theme theme/deck.css --html --allow-local-f
 # PNG
 marp slides.md --images png -o build/png/s.png --theme theme/deck.css --html --allow-local-files < /dev/null
 
+# 安全域（左右64px・上40px・下56px）からのはみ出しを機械で確認する
+python3 scripts-check-margins.py
+
 # 25枚を一覧表示
 ffmpeg -y -pattern_type glob -i 'build/png/s.0*.png' -vf "scale=512:288,tile=4x7" -frames:v 1 build/sheet/contact1.png
 ```

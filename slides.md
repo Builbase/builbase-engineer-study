@@ -110,17 +110,17 @@ author: seiji
 <div class="layer">
 <span class="layer-no">1</span>
 <div><b>エディタ</b><small>コードを読む、直す</small></div>
-<div class="logos"><span class="ico ico-lg i-vscode"></span><span class="ico ico-lg i-cursor"></span></div>
+<div class="logos chips"><span class="ico ico-lg i-vscode"></span><span class="ico ico-lg i-cursor"></span></div>
 </div>
 <div class="layer on">
 <span class="layer-no">2</span>
 <div><b>ターミナル</b><small>文字で命令し、結果を見る</small></div>
-<div class="logos"><span class="ico ico-lg i-macterminal"></span><span class="ico ico-lg i-winterminal"></span><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span><span class="ico ico-lg i-herdr"></span></div>
+<div class="logos chips"><span class="ico ico-lg i-macterminal"></span><span class="ico ico-lg i-winterminal"></span><span class="ico ico-lg i-ghostty"></span></div>
 </div>
 <div class="layer">
 <span class="layer-no">3</span>
 <div><b>CLIエージェント</b><small>指示を受けて、調べて直して確かめる</small></div>
-<div class="logos"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
+<div class="logos chips"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
 </div>
 </div>
 </div>
@@ -210,7 +210,7 @@ author: seiji
 <div><b>3. 確かめる</b><span>コマンドを実行して結果を見る</span></div>
 </div>
 </div>
-<div class="logos" style="margin-top:20px"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
+<div class="logos" style="margin-top:10px"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
 <p class="cap">人が見るのは、権限・実行したコマンド・差分・テスト結果。停止したことと、完成したことは別</p>
 </div>
 
@@ -226,13 +226,13 @@ author: seiji
 <div class="fig">
 <div class="pair">
 <div class="pair-side">
-<div class="logos"><span class="ico ico-lg i-vscode"></span><span class="ico ico-lg i-cursor"></span></div>
+<div class="logos chips"><span class="ico ico-lg i-vscode"></span><span class="ico ico-lg i-cursor"></span></div>
 <b>エディタの内蔵ターミナル</b>
 <span>コードを見ながら、同じシェルとCLIを使う</span>
 </div>
 <div class="pair-link">⇄</div>
 <div class="pair-side on">
-<div class="logos"><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span></div>
+<div class="logos chips"><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span></div>
 <b>ターミナルからエディタを開く</b>
 <span>CLIを主役にし、必要なときだけコードを見る</span>
 </div>
@@ -279,7 +279,7 @@ author: seiji
 <div class="rows">
 <div class="row c2">
 <div class="card">
-<div class="logos" style="margin:0 0 8px">
+<div class="logos chips" style="margin:0 0 8px">
 <span class="ico ico-lg i-macterminal"></span>
 <span class="ico ico-lg i-winterminal"></span>
 <span class="ico ico-lg i-ghostty"></span>
@@ -288,12 +288,12 @@ author: seiji
 <div class="d">画面と入出力そのもの。<br><strong>OSに最初から入っている</strong></div>
 </div>
 <div class="card on">
-<div class="logos" style="margin:0 0 8px">
+<div class="logos chips" style="margin:0 0 8px">
 <span class="ico ico-lg i-cmux"></span>
 <span class="ico ico-lg i-herdr"></span>
 </div>
 <div class="t">束ねる道具</div>
-<div class="d">どれが動いていて、どれが入力待ちかを一覧で見る</div>
+<div class="d">どれが動いていて、どれが入力待ちかを<br>一覧で見る</div>
 </div>
 </div>
 <div class="row c2">
@@ -303,7 +303,7 @@ author: seiji
 </div>
 <div class="card flat">
 <div class="t">束ねる道具は後から足す</div>
-<div class="d"><strong>cmux</strong>はターミナルごと置き換えるアプリ。<br><strong>Herdr</strong>はターミナルではなく、その中で動く</div>
+<div class="d"><strong>cmux</strong>はターミナルごと置き換えるアプリ。<br><strong>Herdr</strong>はターミナルではなく、<br>その中で動く</div>
 </div>
 </div>
 </div>
@@ -322,6 +322,8 @@ author: seiji
 増やす前に、並列化できる仕事かを見極める
 
 ---
+
+<!-- _class: kagi -->
 
 # 「複数体動かす」には2種類ある
 
@@ -393,6 +395,8 @@ author: seiji
 
 ---
 <!-- _header: '2. AIを複数体動かす／A. 違うプロジェクト' -->
+
+<!-- _class: kagi -->
 
 # 「止まった」と「終わった」を分けて見る
 
@@ -533,6 +537,8 @@ author: seiji
 ---
 
 <!-- _header: '2. AIを複数体動かす／B. 1つのプロジェクト' -->
+
+<!-- _class: kagi -->
 
 # 「担当」だけでなく、ゴールまで決める
 

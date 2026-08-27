@@ -69,6 +69,10 @@ section h1 {
   color: var(--ink);
 }
 
+/* 全角の開き括弧は字面の左に約半角ぶんの空きがあるため、そのまま置くと
+   見出しだけが小ラベルより右にずれて見える（実測18px／36px時）。ぶら下げて左端をそろえる */
+section.kagi h1 { text-indent: -0.5em; }
+
 section p  { margin: 12px 0; }
 section ul { margin: 12px 0; padding-left: 1.2em; }
 section li { margin: 10px 0; }
@@ -193,8 +197,11 @@ strong { font-weight: 700; }
 .ai.sm .glyph { width: 64px; height: 64px; }
 
 .proj { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+/* box-sizing を指定しないと width:100% に padding と border が足され、
+   枠が列からはみ出して行全体が左右の余白（64px）を突き破る。実測で片側17px出ていた */
 .proj .box {
-  width: 100%; border: 1px solid var(--gray-200); border-radius: 10px;
+  width: 100%; box-sizing: border-box;
+  border: 1px solid var(--gray-200); border-radius: 10px;
   padding: 18px 16px; text-align: center; font-size: 20px; font-weight: 700;
 }
 .proj .box.on { border-color: var(--blue); background: var(--blue-50); color: var(--navy); }
@@ -277,6 +284,13 @@ strong { font-weight: 700; }
        background-repeat: no-repeat; background-position: center; background-size: contain; }
 .ico-lg { width: 56px; height: 56px; vertical-align: middle; margin: 0; }
 .logos  { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 8px; }
+/* 各社でアイコンの地の有無が違う（cmuxは透過・herdrは不透明）ので、
+   カード見出しに並べるときは同じ大きさの白タイルに載せて視覚の重さを揃える */
+.logos.chips .ico-lg {
+  width: 44px; height: 44px; padding: 8px; box-sizing: content-box;
+  /* background ショートハンドだと .ico の background-image ごと消えてアイコンが真っ白になる */
+  border: 1px solid var(--gray-200); border-radius: 12px; background-color: #ffffff;
+}
 
 /* ロゴを大きく並べるとき。各社でアイコンの地の有無が違う（herdr は不透明）ので、
    同じ大きさのタイルに載せて見た目を揃える */
@@ -319,7 +333,9 @@ strong { font-weight: 700; }
 
 .scene-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
 .terminal-screen {
-  min-height: 330px; overflow: hidden; border-radius: 12px; background: var(--ink);
+  /* 内容が少ないと黒地が余り、多いとキャプションが下端をはみ出す。
+     2枚（②③）が並ぶので枠の大きさは揃えたいが、余らせすぎない値にする */
+  min-height: 248px; overflow: hidden; border-radius: 12px; background: var(--ink);
   box-shadow: 0 4px 16px 3px rgba(0,0,0,0.1), 0 1px 6px 0 rgba(0,0,0,0.3);
   display: flex; flex-direction: column; padding: 62px 34px 28px; position: relative;
 }
@@ -378,7 +394,8 @@ strong { font-weight: 700; }
 .attention-line i { position: absolute; top: -8px; left: calc(50% - 11px); width: 22px; height: 22px; border-radius: 50%; background: var(--blue); }
 
 .ai-row { flex: none; gap: 12px; margin-bottom: 18px; }
-.project-row { flex: none; margin-bottom: 28px; }
+/* すき間が狭いと3つの枠が1本の表に見える。分かれていることを見せる */
+.project-row { flex: none; gap: 24px; margin-bottom: 28px; }
 .project-row .ai .glyph { width: 72px; height: 72px; }
 .compact-flow { gap: 12px; }
 .compact-flow .step { padding: 16px 18px; font-size: 20px; }
@@ -475,7 +492,7 @@ strong { font-weight: 700; }
 .plan-paper b { font-size: 20px; }
 .plan-paper span { font-size: 20px; color: var(--gray-700); }
 .plan-voice { text-align: center; }
-.plan-voice p { margin: 18px 0 0; font-size: 30px; font-weight: 700; line-height: 1.5; color: var(--navy); }
+.plan-voice p { margin: 18px 0 0; font-size: 32px; font-weight: 700; line-height: 1.5; color: var(--navy); }
 
 .role-cast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: stretch; }
 .role-person {
@@ -485,12 +502,12 @@ strong { font-weight: 700; }
 }
 .role-person.review { background: var(--blue-50); border-bottom-color: var(--green); border-radius: 12px 12px 0 0; }
 .role-person .ai .glyph { width: 82px; height: 82px; }
-.role-person b { margin-top: 18px; font-size: 25px; line-height: 1.35; }
-.role-person > span:not(.role-number) { margin-top: 8px; font-size: 19px; color: var(--gray-700); }
+.role-person b { margin-top: 18px; font-size: 24px; line-height: 1.35; }
+.role-person > span:not(.role-number) { margin-top: 8px; font-size: 18px; color: var(--gray-700); }
 .role-number {
   position: absolute; top: 16px; left: 16px; width: 38px; height: 38px;
   border-radius: 50%; background: var(--blue); color: #ffffff;
-  display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700;
 }
 .role-person.review .role-number { background: var(--green); }
 
@@ -503,7 +520,7 @@ strong { font-weight: 700; }
 }
 .parallel-down { height: 42px; color: var(--gray-420); font-size: 28px; line-height: 42px; }
 .parallel-runs { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.parallel-runs > div { min-height: 132px; border-bottom: 5px solid var(--blue); padding: 18px 12px; text-align: center; }
+.parallel-runs > div { min-height: 132px; border-bottom: 6px solid var(--blue); padding: 18px 12px; text-align: center; }
 .parallel-runs span {
   width: 32px; height: 32px; margin: 0 auto 8px; border-radius: 50%;
   background: var(--blue); color: #ffffff; display: flex; align-items: center; justify-content: center;
@@ -511,14 +528,15 @@ strong { font-weight: 700; }
 }
 .parallel-runs b { display: block; font-size: 20px; line-height: 1.35; }
 .parallel-runs small { display: block; margin-top: 6px; color: var(--gray-700); font-size: 17px; }
-.parallel-next { display: flex; flex-direction: column; align-items: center; font-size: 38px; color: var(--gray-420); }
+.parallel-next { display: flex; flex-direction: column; align-items: center; font-size: 36px; line-height: 1; color: var(--gray-420); }
 .parallel-next small { margin-top: 8px; font-size: 16px; line-height: 1.35; text-align: center; }
 .parallel-review {
   min-height: 0; background: var(--blue-50); border-bottom: 6px solid var(--green);
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-  padding: 18px 16px;
+  /* この枠が板の高さを決める。太らせると下の帯がスライド下端をはみ出す */
+  padding: 12px 16px;
 }
-.parallel-review .ai .glyph { width: 48px; height: 48px; }
+.parallel-review .ai .glyph { width: 44px; height: 44px; }
 .parallel-review b { margin-top: 8px; font-size: 20px; }
 .parallel-review span { margin-top: 4px; font-size: 16px; color: var(--gray-700); }
 
@@ -529,9 +547,9 @@ strong { font-weight: 700; }
 }
 .outcome-no {
   width: 38px; height: 38px; border-radius: 50%; background: var(--blue); color: #ffffff;
-  display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700;
 }
-.outcome-list b { font-size: 23px; }
+.outcome-list b { font-size: 24px; }
 .outcome-list p { margin: 0; font-size: 22px; }
 .outcome-list small { font-size: 18px; color: var(--gray-700); }
 
@@ -539,7 +557,7 @@ strong { font-weight: 700; }
 .prompt-person { text-align: center; }
 .prompt-person .ai .glyph { width: 100px; height: 100px; }
 .prompt-person b { display: block; margin-top: 18px; font-size: 26px; }
-.prompt-arrow { text-align: center; font-size: 38px; color: var(--gray-420); }
+.prompt-arrow { text-align: center; font-size: 36px; color: var(--gray-420); }
 .prompt-paper {
   border-left: 10px solid var(--blue); background: var(--gray-50);
   padding: 18px 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
@@ -550,13 +568,13 @@ strong { font-weight: 700; }
 }
 .prompt-paper > div:last-child { border-bottom: none; }
 .prompt-paper b { font-size: 20px; color: var(--navy); }
-.prompt-paper span { font-size: 21px; }
+.prompt-paper span { font-size: 20px; }
 
 .conflict-layout { grid-template-columns: 1.15fr 0.85fr; }
 .conflict-scene { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: center; }
 .conflict-person { text-align: center; }
 .conflict-person .ai .glyph { width: 74px; height: 74px; }
-.conflict-person b { display: block; margin-top: 12px; font-size: 19px; line-height: 1.35; }
+.conflict-person b { display: block; margin-top: 12px; font-size: 20px; line-height: 1.35; }
 .conflict-file {
   position: relative; min-height: 170px; border: 2px solid var(--red); background: #fff5f5;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
@@ -567,7 +585,11 @@ strong { font-weight: 700; }
 }
 .conflict-file::before { left: -44px; }
 .conflict-file::after { right: -44px; transform: rotate(180deg); }
-.conflict-file strong { position: absolute; top: -28px; font-size: 44px; color: var(--red); line-height: 1; }
+/* ×は枠の上辺にまたがる。地を白で抜かないと赤い枠線が×の後ろを素通りして汚れる */
+.conflict-file strong {
+  position: absolute; top: -28px; font-size: 45px; color: var(--red); line-height: 1;
+  background: #ffffff; padding: 0 12px;
+}
 .conflict-file b { font-size: 22px; }
 .conflict-file span { margin-top: 8px; font-size: 16px; color: var(--gray-700); }
 
@@ -606,7 +628,7 @@ strong { font-weight: 700; }
 }
 .mistake-list span {
   width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: #ffffff;
-  display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700;
 }
 .mistake-list b { font-size: 23px; }
 .mistake-list i { font-size: 30px; font-style: normal; color: var(--gray-420); text-align: center; }
@@ -615,9 +637,10 @@ strong { font-weight: 700; }
 .closing-path {
   display: grid; grid-template-columns: 1fr 70px 1fr 70px 1fr; gap: 18px; align-items: center;
 }
+/* 3列とも同じ「面＋下線」にする。強調列だけに面を付けると、他の2列が宙に浮いて見える */
 .closing-path > div {
   min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; border-bottom: 6px solid var(--gray-200); padding: 28px 20px;
+  text-align: center; background: var(--gray-50); border-bottom: 6px solid var(--gray-200); padding: 28px 20px;
 }
 .closing-path > div.on { background: var(--blue-50); border-bottom-color: var(--blue); }
 .closing-path b { margin-top: 22px; font-size: 26px; line-height: 1.4; }  /* 28px だと「人が動かして確認する」が折り返す */
@@ -745,9 +768,9 @@ section > .note:last-child { margin-top: 24px; padding-top: 0; }
 /* === GENERATED:END === */
 
 /* 並列ボードのレビュー欄に完成の条件を入れる（旧「レビュー担当は3人の完成を待つ」から統合） */
-.parallel-review .review-checks { margin-top: 12px; text-align: left; }
+.parallel-review .review-checks { margin-top: 8px; text-align: left; }
 .parallel-review .review-checks > div {
-  position: relative; padding-left: 24px; margin: 8px 0;
+  position: relative; padding-left: 24px; margin: 5px 0;
   font-size: 20px; line-height: 1.35; color: var(--ink);
 }
 .parallel-review .review-checks > div::before {
