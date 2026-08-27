@@ -621,26 +621,32 @@ strong { font-weight: 700; }
 .closing-arrow { text-align: center; font-size: 36px; color: var(--gray-420); }
 
 /* ターミナル3製品の詳細。比較しやすい骨格を保ち、中央のロゴ位置だけ交互に振る。 */
+/* 右カラムを 1fr にすると残り幅いっぱいに広がり、中身は左端から並ぶので
+   右側だけ空いて左寄りに見える。列を中身なりの幅にして、2列ごと中央へ置く */
 .terminal-profile {
-  display: grid; grid-template-columns: 350px 1fr; gap: 58px; align-items: center;
+  display: grid; grid-template-columns: 350px auto; gap: 58px;
+  align-items: center; justify-content: center;
 }
-.terminal-profile.reverse { grid-template-columns: 1fr 350px; }
+.terminal-profile.reverse { grid-template-columns: auto 350px; }
 .terminal-profile.reverse .terminal-brand { order: 2; }
 .terminal-profile.reverse .terminal-points { order: 1; }
 section:has(.terminal-profile) {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  /* 見出しを画面上端に貼り付けず、中身の直上に置く。
+     行を中身なりの高さにして、見出しごと縦中央へまとめる */
+  grid-template-rows: auto auto;
+  align-content: center;
   /* 列を明示しないと中身の幅に縮み、継承された justify-content:center で
      グリッド全体が中央へ寄る（見出しだけ約137px 右へずれていた） */
   grid-template-columns: minmax(0, 1fr);
   justify-content: stretch;
   padding-top: 76px;
 }
-/* grid 化した影響で見出しが中央へ寄るので、他ページと同じ左端に揃える */
+/* 中身を画面中央に置いているので、見出しも中央にそろえる */
 section:has(.terminal-profile) h1 {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   justify-self: stretch;
-  text-align: left;
+  text-align: center;
 }
 .terminal-brand {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
