@@ -237,7 +237,7 @@ author: seiji
 <span>CLIを主役にし、必要なときだけコードを見る</span>
 </div>
 </div>
-<div class="rule">選ぶのは道具ではなく、どこに注意を置くか</div>
+<div class="rule">選ぶのは道具ではなく、どこに注意を置くか。一方を捨てず、作業に合わせて主役を入れ替える</div>
 </div>
 
 <!--
@@ -309,32 +309,6 @@ author: seiji
 </div>
 <p class="cap">今日は名前だけ。実際に触るのは、この次に出てくるCLIエージェント</p>
 </div>
-
----
-
-# 使い分けは「どこに注意を置くか」で決まる
-
-<div class="fig">
-<div class="attention-scale">
-<div class="attention-side">
-<div class="logos"><span class="ico ico-lg i-vscode"></span><span class="ico ico-lg i-cursor"></span></div>
-<b>コードに注意を置く</b><span>読む、直す、デバッグする</span>
-</div>
-<div class="attention-line"><i></i></div>
-<div class="attention-side on">
-<div class="logos"><span class="ico ico-lg i-cmux"></span><span class="ico ico-lg i-herdr"></span></div>
-<b>セッションに注意を置く</b><span>複数の実行、入力待ち、通知を追う</span>
-</div>
-</div>
-<p class="cap">一方を捨てる必要はない。作業に合わせて主役を入れ替える</p>
-</div>
-
-<!--
-[Sources]
-- https://code.visualstudio.com/docs/agents/run/agents-window
-- https://github.com/manaflow-ai/cmux
-- https://herdr.dev/docs/
--->
 
 ---
 
@@ -538,10 +512,15 @@ author: seiji
 <div class="parallel-review">
 <div class="ai green"><div class="glyph"></div></div>
 <b>4. レビュー担当</b>
-<span>最後に3つを合わせる</span>
+<span>3つをつなげて動かす</span>
+<div class="review-checks">
+<div>画面から操作できる</div>
+<div>データを保存できる</div>
+<div>全体テストが通る</div>
 </div>
 </div>
-<div class="rule">同じファイルを触る作業は、同時に進めない</div>
+</div>
+<div class="rule">同じファイルを触る作業は、同時に進めない。別のAIが「大丈夫」と言っても、最後は人が確認する</div>
 </div>
 
 <!--
@@ -626,41 +605,6 @@ author: seiji
 - https://learn.chatgpt.com/docs/agent-configuration/subagents
 - https://learn.chatgpt.com/docs/environments/git-worktrees
 - https://code.claude.com/docs/en/worktrees
--->
-
----
-
-<!-- _header: '2. AIを複数体動かす／B. 1つのプロジェクト' -->
-
-# レビュー担当は、3人の完成を待つ
-
-<div class="fig">
-<div class="review-merge">
-<div class="review-inputs">
-<div><span class="review-dot blue"></span><b>UI</b><small>画面</small></div>
-<div><span class="review-dot navy"></span><b>バックエンド</b><small>機能とAPI</small></div>
-<div><span class="review-dot gray"></span><b>DB</b><small>保存</small></div>
-</div>
-<div class="review-arrow">→</div>
-<div class="review-person">
-<div class="ai green"><div class="glyph"></div></div>
-<b>レビュー担当</b><span>3つをつなげて動かす</span>
-</div>
-<div class="review-arrow">→</div>
-<div class="review-checks">
-<div>画面から操作できる</div>
-<div>データを保存できる</div>
-<div>全体テストが通る</div>
-</div>
-</div>
-<div class="rule">別のAIが「大丈夫」と言っても、最後は人が確認する</div>
-</div>
-
-<!--
-[Sources]
-- https://learn.chatgpt.com/docs/agent-configuration/subagents
-- https://code.claude.com/docs/en/agent-teams
-- https://www.anthropic.com/engineering/multi-agent-research-system
 -->
 
 ---
