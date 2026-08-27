@@ -8,7 +8,7 @@
 
 安全域は theme/deck.css の section padding（76px 64px 56px）に合わせてある。
 除外するもの:
-  - 表紙・章扉は全面塗りなので必ずひっかかる（EXEMPT に列挙）
+  - 表紙・章扉は全面塗りなので自動で除外する（四辺すべてに達しているもの）
   - box-shadow を持つ枠は左右に6pxほど滲む。欠陥ではない
 """
 import subprocess, sys, pathlib
@@ -16,7 +16,7 @@ import subprocess, sys, pathlib
 W, H = 1280, 720
 LEFT, RIGHT, TOP, BOTTOM = 64, 1216, 40, 664
 SHADOW = 8          # box-shadow の滲みとして見逃す幅
-EXEMPT = {1, 5, 13, 18}   # 全面塗りの表紙・章扉
+# 全面塗り（表紙・章扉）は四辺すべてに達する。番号を書くと枚数が変わるたび腐るので自動判定
 
 def scan(png):
     raw = subprocess.run(
@@ -36,12 +36,11 @@ def main():
         sys.exit("build/png/*.png がない。先に marp でPNGを書き出すこと")
     bad = 0
     for p in pngs:
-        n = int(p.stem.split(".")[1])
         box = scan(p)
         if box is None:
             continue
         l, r, t, b = box
-        if n in EXEMPT:
+        if l == 0 and r >= W - 1 and t == 0 and b >= H - 2:
             print(f"{p.name}  （全面塗り・除外）"); continue
         msgs = []
         if l < LEFT - SHADOW:  msgs.append(f"左が{LEFT-l}px出ている")

@@ -347,6 +347,15 @@ strong { font-weight: 700; }
 .terminal-screen code { display: block; color: #ffffff; background: transparent; font-size: 22px; line-height: 1.7; }
 .terminal-screen code.output { color: #9de2b9; margin: 0 0 16px 18px; }
 .terminal-screen .prompt { color: #7ea6ff; font-weight: 700; }
+/* そのまま貼れる指示文を見せる枠。項目名だけ色を変えて、型が読み取れるようにする。
+   間隔は全角スペースでなく margin で作る（表記ルール） */
+.paste code { line-height: 1.9; }
+/* 2行目以降は同じ入力の続き。プロンプト記号を繰り返すと4回打ったように見える */
+.paste code.cont { padding-left: 1.55em; }
+.paste .k {
+  display: inline-block; min-width: 8em; margin-right: 12px;
+  color: #7ee3b0; font-weight: 700;
+}
 .editor-scene .body { height: 330px; }
 .numbered { display: grid; gap: 16px; }
 .numbered > div { border-left: 5px solid var(--blue); padding: 12px 0 12px 20px; }
@@ -569,6 +578,19 @@ strong { font-weight: 700; }
 .prompt-paper > div:last-child { border-bottom: none; }
 .prompt-paper b { font-size: 20px; color: var(--navy); }
 .prompt-paper span { font-size: 20px; }
+
+/* 事故の実例。時刻・担当・起きたことの3列で、順に起きたことが読めるようにする */
+.incident { display: grid; gap: 10px; }
+.incident > div {
+  display: grid; grid-template-columns: 108px 240px 1fr; gap: 20px; align-items: center;
+  box-sizing: border-box; padding: 14px 20px;
+  border-left: 6px solid var(--gray-200); background: var(--gray-50);
+}
+.incident > div.bad { border-left-color: var(--red); background: #fff5f5; }
+.incident .w { font-size: 20px; font-weight: 700; color: var(--gray-536); }
+.incident b  { font-size: 22px; }
+.incident .d { font-size: 20px; color: var(--gray-700); }
+.incident > div.bad .d { color: var(--ink); }
 
 .conflict-layout { grid-template-columns: 1.15fr 0.85fr; }
 .conflict-scene { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: center; }

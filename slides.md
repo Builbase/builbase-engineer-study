@@ -131,6 +131,13 @@ author: seiji
 - https://code.visualstudio.com/docs/editing/userinterface
 - https://code.claude.com/docs/en/overview
 - https://developers.openai.com/codex/cli/
+- https://code.visualstudio.com/docs/agents/run/agents-window
+- https://docs.cursor.com/get-started/migrate-from-vs-code
+- https://prod.cursor.com/help/ai-features/multi-agent
+
+[話すこと] VS Code と Cursor の違いは口頭で補う。2026年時点ではどちらもエディタ内で
+AIセッションを扱える。VS Code は拡張と Git まわりが厚く、Cursor は AI と
+複数エージェントが最初から入っている。表にすると読ませてしまうのでスライドには出さない
 -->
 
 ---
@@ -244,31 +251,6 @@ author: seiji
 [Sources]
 - https://code.visualstudio.com/docs/terminal/basics
 - https://ghostty.org/docs/features
--->
-
----
-
-# VS CodeとCursorは、強みの置き方が違う
-
-<div class="fig">
-<table class="compare">
-<thead><tr><th></th><th>強み</th><th>注意点</th><th>向いている場面</th></tr></thead>
-<tbody>
-<tr><th><span class="ico i-vscode"></span>VS Code</th><td>広い拡張機能、Git、デバッグ、内蔵ターミナル</td><td>拡張機能の選定と権限確認が必要</td><td>基礎を学び、チーム標準へ合わせる</td></tr>
-<tr class="on"><th><span class="ico i-cursor"></span>Cursor</th><td>VS Code系の操作感にAIと複数エージェントを統合</td><td>料金枠、AIの権限、拡張機能の差を確認</td><td>AI中心で実装し、差分を画面で読む</td></tr>
-</tbody>
-</table>
-<p class="cap">2026年時点では、どちらもエディタ内でAIセッションを扱える</p>
-</div>
-
-<!--
-[Sources]
-- https://code.visualstudio.com/docs/core-editor/overview
-- https://code.visualstudio.com/docs/agents/run/agents-window
-- https://code.visualstudio.com/docs/configure/extensions/extension-runtime-security
-- https://docs.cursor.com/get-started/migrate-from-vs-code
-- https://prod.cursor.com/help/ai-features/multi-agent
-- https://cursor.com/docs/configuration/worktrees
 -->
 
 ---
@@ -564,25 +546,43 @@ author: seiji
 # AIへの指示は、4行で書く
 
 <div class="fig">
-<div class="prompt-layout">
-<div class="prompt-person">
-<div class="ai blue"><div class="glyph"></div></div>
-<b>UI担当へ</b>
+<div class="terminal-screen paste">
+<div class="terminal-bar">Claude Code ─ UI担当</div>
+<code><span class="prompt">&gt;</span> <span class="k">やること</span>Todoの一覧画面と、追加フォームを作る</code>
+<code class="cont"><span class="k">触る場所</span>src/components/ の中だけ</code>
+<code class="cont"><span class="k">触らない場所</span>src/api/ と src/db/ は開かない</code>
+<code class="cont"><span class="k">終わりの条件</span>npm run dev で画面が出て、npm test が通る</code>
 </div>
-<div class="prompt-arrow">→</div>
-<div class="prompt-paper">
-<div><b>やること</b><span>Todo一覧画面を作る</span></div>
-<div><b>触る場所</b><span>画面のフォルダ</span></div>
-<div><b>触らない場所</b><span>APIとDBのフォルダ</span></div>
-<div><b>終わりの条件</b><span>画面表示とテストが通る</span></div>
-</div>
-</div>
+<p class="cap">この4つが無いと、AIは範囲を自分で広げるか、どこで終わるかを自分で決める</p>
 </div>
 
 <!--
 [Sources]
 - https://learn.chatgpt.com/docs/long-running-work
 - https://www.anthropic.com/engineering/multi-agent-research-system
+-->
+
+---
+
+<!-- _header: '2. AIを複数体動かす／B. 1つのプロジェクト' -->
+
+# テストは通る。気づくのは翌日
+
+<div class="fig">
+<div class="incident">
+<div><span class="w">10:00</span><b>UI担当</b><span class="d">Todo.tsx に追加フォームを書く</span></div>
+<div><span class="w">10:05</span><b>バックエンド担当</b><span class="d">同じ Todo.tsx に保存処理を書く</span></div>
+<div class="bad"><span class="w">10:05</span><b>上書き</b><span class="d">後から書いたほうが、前の変更を消す</span></div>
+<div><span class="w">10:06</span><b>npm test</b><span class="d">24 passed。フォームのテストは無いので、通ってしまう</span></div>
+<div class="bad"><span class="w">翌日</span><b>気づく</b><span class="d">「追加フォーム、どこいった？」</span></div>
+</div>
+<div class="rule">壊れたと分からない壊れ方をする。だから、触る場所を先に分ける</div>
+</div>
+
+<!--
+[Sources]
+- https://code.claude.com/docs/en/worktrees
+- https://learn.chatgpt.com/docs/environments/git-worktrees
 -->
 
 ---
