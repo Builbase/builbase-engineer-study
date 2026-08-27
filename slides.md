@@ -395,28 +395,7 @@ author: seiji
 -->
 
 ---
-
 <!-- _header: '2. AIを複数体動かす／A. 違うプロジェクト' -->
-
-# 「止まった」と「終わった」を分けて見る
-
-<div class="fig">
-<div class="row c3 state-row">
-<div class="card flat"><div class="status-dot run"></div><div class="t">実行中</div><div class="d">まだ手を出さず、別の仕事へ</div></div>
-<div class="card on"><div class="status-dot wait"></div><div class="t">入力待ち</div><div class="d">承認、質問、追加情報を返す</div></div>
-<div class="card"><div class="status-dot done"></div><div class="t">停止</div><div class="d">差分とテストを見て、完成か判断</div></div>
-</div>
-<div class="rule">通知は注意を戻す仕組み。品質を保証する仕組みではない</div>
-</div>
-
-<!--
-[Sources]
-- https://github.com/manaflow-ai/cmux
-- https://herdr.dev/docs/
-- https://learn.chatgpt.com/docs/long-running-work
--->
-
----
 
 # cmuxなら、CLIセッションを一画面で追える
 
@@ -436,6 +415,27 @@ author: seiji
 [Sources]
 - https://github.com/manaflow-ai/cmux
 - https://www.youtube.com/watch?v=i-WxO5YUTOs
+-->
+
+---
+<!-- _header: '2. AIを複数体動かす／A. 違うプロジェクト' -->
+
+# 「止まった」と「終わった」を分けて見る
+
+<div class="fig">
+<div class="row c3 state-row">
+<div class="card flat"><div class="status-dot run"></div><div class="t">実行中</div><div class="d">まだ手を出さず、別の仕事へ</div></div>
+<div class="card on"><div class="status-dot wait"></div><div class="t">入力待ち</div><div class="d">承認、質問、追加情報を返す</div></div>
+<div class="card"><div class="status-dot done"></div><div class="t">停止</div><div class="d">差分とテストを見て、完成か判断</div></div>
+</div>
+<div class="rule">通知は注意を戻す仕組み。品質を保証する仕組みではない</div>
+</div>
+
+<!--
+[Sources]
+- https://github.com/manaflow-ai/cmux
+- https://herdr.dev/docs/
+- https://learn.chatgpt.com/docs/long-running-work
 -->
 
 ---
