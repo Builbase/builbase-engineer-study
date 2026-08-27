@@ -665,28 +665,6 @@ author: seiji
 
 ---
 
-<!-- _header: '2. AIを複数体動かす／B. 1つのプロジェクト' -->
-
-# うまくいかないときは、3か所を確認する
-
-<div class="fig">
-<div class="mistake-list">
-<div><span>1</span><b>同じファイルを直した</b><i>→</i><strong>担当場所を分ける</strong></div>
-<div><span>2</span><b>UIとAPIの形が違った</b><i>→</i><strong>設計メモをそろえる</strong></div>
-<div><span>3</span><b>レビューを早く始めた</b><i>→</i><strong>3担当の完成を待つ</strong></div>
-</div>
-<div class="rule">迷ったら、同時に動かす数を減らす</div>
-</div>
-
-<!--
-[Sources]
-- https://learn.chatgpt.com/docs/long-running-work
-- https://learn.chatgpt.com/docs/environments/git-worktrees
-- https://www.anthropic.com/engineering/multi-agent-research-system
--->
-
----
-
 # 今日から試す3つ
 
 <div class="fig">
