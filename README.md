@@ -1,6 +1,6 @@
 # エンジニア勉強会 第1回（2026-08-28 / 60分）
 
-「ターミナルとエディタ」「AIを複数体動かす」の2本立て。全31枚。
+「ターミナルとエディタ」「AIを複数体動かす」の2本立て。全28枚。
 
 ページ番号は出さない設定（`paginate: false`）。
 スライドは1枚1メッセージに絞り、詳しい説明は`content-notes.md`と口頭で補う。
@@ -9,7 +9,7 @@
 
 | ファイル | 中身 |
 |---|---|
-| `slides.md` | Marp本体（31枚） |
+| `slides.md` | Marp本体（28枚） |
 | `theme/deck.css` | テーマと図版用CSS |
 | `content-notes.md` | **話す内容の正本** |
 | `demo-script.md` | 2回の実演と時間調整 |
@@ -46,12 +46,28 @@ marp slides.md -o build/slides.pdf --theme theme/deck.css --html --allow-local-f
 # PNG
 marp slides.md --images png -o build/png/s.png --theme theme/deck.css --html --allow-local-files < /dev/null
 
-# 31枚を一覧表示
-ffmpeg -y -pattern_type glob -i 'build/png/s.*.png' -vf "scale=384:216,tile=5x7" -frames:v 1 build/sheet/contact1.png
+# 28枚を一覧表示
+ffmpeg -y -pattern_type glob -i 'build/png/s.0*.png' -vf "scale=512:288,tile=4x7" -frames:v 1 build/sheet/contact1.png
 ```
 
 `< /dev/null`はMarpが標準入力を待つ環境で必要。
 `--html`はHTMLで組んだ図を描画するために必要。
+
+## 時間配分（60分）
+
+| 範囲 | 内容 | 目安 |
+|---|---|---|
+| 1〜4 | はじめに | 5分 |
+| 5〜14 | 第1章 ターミナルとエディタ | 20分 |
+| 15〜27 | 第2章 AIを複数体動かす | 28分 |
+| 28 | 今日から試す3つ | 3分 |
+
+**1枚あたり約2分。** 枚数を増やすと確実に溢れるので、
+足したくなったら既存のスライドに要素を足す側で考える。
+
+第1章は当初13枚あり、実測で30分を超えていた。
+ターミナル製品の比較表と製品ごとの深掘り4枚を1枚へ圧縮して10分回収した。
+学生がその場で入れない製品の詳細は、投影面に置かず口頭へ下げる。
 
 ## 内容上の前提
 
@@ -83,6 +99,11 @@ branchやworktreeは発展事項として口頭で補足する。
 - 1スライド1メッセージ
 - 2枚続けて表やカードグリッドを使わない
 - 主要な図は1枚につき3要素程度に絞る
+- **見出しの縦位置は全スライドで固定する。** 中身の量に合わせて上下させると、
+  めくるたびに視線が見出しを探し直すことになる。中身は見出しの直下から始め、
+  余った余白は下にまとめる
+- **下の余白が気になるときは、そのスライドの中身を増やすか要素を大きくする。**
+  見出しを動かして埋めない
 - 全角スペースを使わない
 - 英数字と日本語の間に不要な空白を入れない
 - 英単語同士の空白は残す（`VS Code`、`Claude Code`、`Plan Mode`）
