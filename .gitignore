@@ -1,0 +1,5 @@
+# 生成物（marp の出力）
+build/
+
+# macOS
+.DS_Store
