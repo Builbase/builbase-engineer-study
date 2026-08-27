@@ -115,7 +115,7 @@ author: seiji
 <div class="layer on">
 <span class="layer-no">2</span>
 <div><b>ターミナル環境</b><small>CLIセッションを表示、整理する</small></div>
-<div class="logos"><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span><span class="ico ico-lg i-herdr"></span></div>
+<div class="logos"><span class="ico ico-lg i-macterminal"></span><span class="ico ico-lg i-winterminal"></span><span class="ico ico-lg i-ghostty"></span><span class="ico ico-lg i-cmux"></span><span class="ico ico-lg i-herdr"></span></div>
 </div>
 <div class="layer">
 <span class="layer-no">3</span>
