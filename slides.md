@@ -792,8 +792,6 @@ author: seiji
 
 ---
 
-<!-- _header: '' -->
-
 # 今日から試す3つ
 
 <div class="fig">

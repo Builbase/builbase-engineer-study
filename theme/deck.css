@@ -628,10 +628,20 @@ strong { font-weight: 700; }
 .terminal-profile.reverse .terminal-brand { order: 2; }
 .terminal-profile.reverse .terminal-points { order: 1; }
 section:has(.terminal-profile) {
-  display: grid; grid-template-rows: auto minmax(0, 1fr); padding-top: 54px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  /* 列を明示しないと中身の幅に縮み、継承された justify-content:center で
+     グリッド全体が中央へ寄る（見出しだけ約137px 右へずれていた） */
+  grid-template-columns: minmax(0, 1fr);
+  justify-content: stretch;
+  padding-top: 76px;
 }
-section:has(.terminal-profile) > header { display: none; }
-section:has(.terminal-profile) h1 { margin-bottom: 20px; }
+/* grid 化した影響で見出しが中央へ寄るので、他ページと同じ左端に揃える */
+section:has(.terminal-profile) h1 {
+  margin-bottom: 20px;
+  justify-self: stretch;
+  text-align: left;
+}
 .terminal-brand {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center;
@@ -663,17 +673,9 @@ section:has(.terminal-profile) h1 { margin-bottom: 20px; }
 .terminal-point.strength li::before { content: "✓"; color: var(--green); }
 .terminal-point.weakness li::before { content: "−"; color: var(--red); }
 
-/* 2章の具体例はタイトルだけで十分なので、長い章名ヘッダーを重ねない。 */
-section:has(.project-row) > header,
-section:has(.state-row) > header,
-section:has(.plan-layout) > header,
-section:has(.role-cast) > header,
-section:has(.parallel-board) > header,
-section:has(.outcome-list) > header,
-section:has(.prompt-layout) > header,
-section:has(.conflict-layout) > header,
-section:has(.review-merge) > header,
-section:has(.mistake-list) > header { display: none; }
+/* 章ラベルは全ページ同じ位置に出す。
+   ページ番号を出していないので、これが唯一の現在地表示になる（design-guide の共通原則）。
+   以前はレイアウトごとに display:none で消していたが、出る枚と出ない枚が混在していた。 */
 
 /* ------------------------------------------------------------------
  * スライド種別
