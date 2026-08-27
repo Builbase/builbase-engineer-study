@@ -244,150 +244,42 @@ author: seiji
 
 ---
 
-# ターミナル環境は、管理したい規模で選ぶ
+# ターミナルまわりは、2つの層に分かれる
 
 <div class="fig">
-<table class="compare terminal-tools">
-<thead><tr><th></th><th>強み</th><th>注意点</th><th>向いている場面</th></tr></thead>
-<tbody>
-<tr><th><span class="ico i-ghostty"></span>Ghostty</th><td>軽快な描画、タブ、分割。汎用の土台</td><td>AIの状態管理は別の道具が必要</td><td>少数のCLIセッション</td></tr>
-<tr class="on"><th><span class="ico i-cmux"></span>cmux</th><td>縦タブ、分割、通知、ブラウザを一画面へ集約</td><td>macOS限定。仕事の分割は人間が決める</td><td>Macで複数セッションを見渡す</td></tr>
-<tr><th><span class="ico i-herdr"></span>Herdr</th><td>セッションを常駐させ、別端末から再接続できる</td><td>サーバーとattach／detachの理解が必要</td><td>長時間のCLI作業へ戻る</td></tr>
-</tbody>
-</table>
+<div class="rows">
+<div class="row c2">
+<div class="card">
+<div class="logos" style="margin:0 0 8px">
+<span class="ico ico-lg i-macterminal"></span>
+<span class="ico ico-lg i-winterminal"></span>
+<span class="ico ico-lg i-ghostty"></span>
 </div>
-
-<!--
-[Sources]
-- https://ghostty.org/docs/features
-- https://github.com/manaflow-ai/cmux
-- https://www.youtube.com/watch?v=i-WxO5YUTOs
-- https://herdr.dev/
-- https://herdr.dev/docs/
--->
-
----
-
-# Ghosttyは、軽快な汎用ターミナル
-
-<div class="fig">
-<div class="terminal-profile">
-<div class="terminal-brand">
-<span class="terminal-logo i-ghostty"></span>
-<b>Ghostty</b>
-<span class="terminal-kind">汎用ターミナル</span>
-<p class="terminal-fit"><b>向く場面</b><span>普段の開発と、少数のCLIセッション</span></p>
+<div class="t">ターミナル本体</div>
+<div class="d">画面と入出力そのもの。<br><strong>OSに最初から入っている</strong></div>
 </div>
-<div class="terminal-points">
-<div class="terminal-point strength">
-<h2>強み</h2>
-<ul>
-<li>GPU描画とネイティブUIで軽快</li>
-<li>タブ、分割、複数ウインドウを標準搭載</li>
-<li>macOSとLinuxで使える</li>
-</ul>
+<div class="card on">
+<div class="logos" style="margin:0 0 8px">
+<span class="ico ico-lg i-cmux"></span>
+<span class="ico ico-lg i-herdr"></span>
 </div>
-<div class="terminal-point weakness">
-<h2>弱み</h2>
-<ul>
-<li>Windows版はまだない</li>
-<li>AIの入力待ちは、自分でタブや分割を追う</li>
-</ul>
+<div class="t">複数のAIを束ねる道具</div>
+<div class="d">どれが動いていて、どれが入力待ちかを一覧で見る</div>
+</div>
+</div>
+<div class="row c2">
+<div class="card flat">
+<div class="t">まずは純正で足りる</div>
+<div class="d">Macは<strong>ターミナル</strong><br>Windowsは<strong>Windowsターミナル</strong><br>Ghosttyなどは後から乗り換えればよい</div>
+</div>
+<div class="card flat">
+<div class="t">束ねる道具は後から足す</div>
+<div class="d"><strong>cmux</strong>はターミナルごと置き換えるアプリ。<br><strong>Herdr</strong>はターミナルではなく、その中で動く</div>
 </div>
 </div>
 </div>
+<p class="cap">今日は名前だけ。実際に触るのは、この次に出てくるCLIエージェント</p>
 </div>
-
-<!--
-[Sources]
-- https://ghostty.org/docs/features
-- https://github.com/ghostty-org/ghostty
-- Icon: https://raw.githubusercontent.com/ghostty-org/ghostty/main/images/icons/icon_512.png
-- AIセッション管理の注意点は、Ghosttyが汎用ターミナルであることとcmux開発者の利用記述からの推論: https://github.com/manaflow-ai/cmux
--->
-
----
-
-# cmuxは、複数AIを見渡せる
-
-<div class="fig">
-<div class="terminal-profile reverse">
-<div class="terminal-brand">
-<span class="terminal-logo i-cmux"></span>
-<b>cmux</b>
-<span class="terminal-kind">AI作業向けターミナル</span>
-<p class="terminal-fit"><b>向く場面</b><span>Macで複数のAIセッションを動かす</span></p>
-</div>
-<div class="terminal-points">
-<div class="terminal-point strength">
-<h2>強み</h2>
-<ul>
-<li>縦タブに作業場所、Git、通知を集約</li>
-<li>入力待ちを色と通知で見つけやすい</li>
-<li>ターミナルとブラウザを並べて操作できる</li>
-</ul>
-</div>
-<div class="terminal-point weakness">
-<h2>弱み</h2>
-<ul>
-<li>macOS専用</li>
-<li>誰に何を任せるかは、人が設計する</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-
-<!--
-[Sources]
-- https://cmux.com/
-- https://github.com/manaflow-ai/cmux
-- https://github.com/manaflow-ai/cmux/blob/main/docs/notifications.md
-- Icon: https://cmux.com/brand/app-icon-light.png
--->
-
----
-
-# Herdrは、長時間の作業へ戻れる
-
-<div class="fig">
-<div class="terminal-profile">
-<div class="terminal-brand">
-<span class="terminal-logo i-herdr"></span>
-<b>Herdr</b>
-<span class="terminal-kind">常駐型のターミナル管理</span>
-<p class="terminal-fit"><b>向く場面</b><span>長時間のAI作業へ、別の端末から戻る</span></p>
-</div>
-<div class="terminal-points">
-<div class="terminal-point strength">
-<h2>強み</h2>
-<ul>
-<li>サーバーが動く間は、切断しても処理が続く</li>
-<li>別のターミナルやSSHから再接続できる</li>
-<li>working、blocked、idleを見分けられる</li>
-</ul>
-</div>
-<div class="terminal-point weakness">
-<h2>弱み</h2>
-<ul>
-<li>サーバー起動とdetach／reattachを覚える</li>
-<li>サーバー再起動では、実行中プロセスは戻らない</li>
-<li>未対応AIは、詳細な状態表示や復元に限界がある</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-
-<!--
-[Sources]
-- https://herdr.dev/
-- https://herdr.dev/docs/
-- https://herdr.dev/docs/session-state/
-- https://herdr.dev/docs/agents/
-- https://github.com/herdrdev/herdr
-- Icon: https://raw.githubusercontent.com/herdrdev/herdr/master/assets/logo.png
--->
 
 ---
 

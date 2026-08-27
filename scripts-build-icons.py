@@ -26,6 +26,8 @@ LOGOS = {
     'ghostty': ('ghostty.png', None),
     'cmux':    ('cmux.png',    None),
     'herdr':   ('herdr.png',   None),
+    'macterminal': ('macterminal.png', None),   # macOS 標準の Terminal.app から抽出
+    'winterminal': ('winterminal.png', None),   # microsoft/terminal の公式アイコン
 }
 
 # AI を人に見立てるグリフ。頭＋肩の標準的な人型
