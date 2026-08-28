@@ -3,3 +3,6 @@ build/
 
 # macOS
 .DS_Store
+
+# Codex session state
+.Codex/session-log.md

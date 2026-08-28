@@ -39,7 +39,7 @@ PERSON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
 
 # 内容を表すための汎用アイコン（ツールのロゴではない）
 GLYPHS = {
-    'growth':   '<path d="M8 40h8v16H8zm14-12h8v28h-8zm14-14h8v42h-8z" fill="{c}"/><path d="M40 8h16v16l-5.6-5.6L36 32.8l-4.4-4.4 14.4-14.4z" fill="{c}"/>',
+    'growth':   '<path d="M8 44h8v12H8zm14-8h8v20h-8zm14-6h8v26h-8z" fill="{c}"/><path d="M10 34 24 20l10 8 18-18" fill="none" stroke="{c}" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/><path d="M42 10h12v12" fill="none" stroke="{c}" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>',
     'bolt':     '<path d="M34 4 12 36h14l-4 24 22-32H30z" fill="{c}"/>',
     'chat':     '<path d="M8 10h48a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H26L12 58V46H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" fill="{c}"/>',
     'calendar': '<path d="M12 10h40a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" fill="{c}"/><path d="M8 24h48v6H8z" fill="#ffffff"/><path d="M18 4h6v12h-6zm22 0h6v12h-6z" fill="{c}"/>',

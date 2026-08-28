@@ -85,6 +85,11 @@ strong { font-weight: 700; }
 /* 中身を縦中央に置くと、見出しとの間に大きな空きができる。
    見出しの直下から始めて、余った余白は下にまとめる */
 .fig { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; }
+section.content-center .fig {
+  align-items: center;
+  justify-content: center;
+}
+section.content-center .fig > * { width: 100%; }
 .fig > .tiles,
 .fig > .win,
 .fig > .flow,
@@ -343,6 +348,12 @@ strong { font-weight: 700; }
   position: absolute; top: 0; left: 0; right: 0; height: 40px; padding: 0 18px;
   display: flex; align-items: center; background: var(--gray-50); color: var(--gray-700);
   font-size: 16px; font-family: var(--sans);
+}
+.mock-tools {
+  display: flex; align-items: center; gap: 10px; margin-left: auto;
+}
+.mock-tools .ico {
+  width: 24px; height: 24px; margin: 0; flex: none;
 }
 .terminal-screen code { display: block; color: #ffffff; background: transparent; font-size: 22px; line-height: 1.7; }
 .terminal-screen code.output { color: #9de2b9; margin: 0 0 16px 18px; }
@@ -775,8 +786,8 @@ section > .note:last-child { margin-top: 24px; padding-top: 0; }
 .ai.green .glyph { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2219%22%20r%3D%2212%22%20fill%3D%22%23197a4b%22%2F%3E%3Cpath%20d%3D%22M6%2060c0-13.8%2011.6-24%2026-24s26%2010.2%2026%2024z%22%20fill%3D%22%23197a4b%22%2F%3E%3C%2Fsvg%3E"); }
 .ai.gray .glyph { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2219%22%20r%3D%2212%22%20fill%3D%22%23949494%22%2F%3E%3Cpath%20d%3D%22M6%2060c0-13.8%2011.6-24%2026-24s26%2010.2%2026%2024z%22%20fill%3D%22%23949494%22%2F%3E%3C%2Fsvg%3E"); }
 .ai.ink .glyph { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2219%22%20r%3D%2212%22%20fill%3D%22%231a1a1a%22%2F%3E%3Cpath%20d%3D%22M6%2060c0-13.8%2011.6-24%2026-24s26%2010.2%2026%2024z%22%20fill%3D%22%231a1a1a%22%2F%3E%3C%2Fsvg%3E"); }
-.g-growth { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2040h8v16H8zm14-12h8v28h-8zm14-14h8v42h-8z%22%20fill%3D%22%230031d8%22%2F%3E%3Cpath%20d%3D%22M40%208h16v16l-5.6-5.6L36%2032.8l-4.4-4.4%2014.4-14.4z%22%20fill%3D%22%230031d8%22%2F%3E%3C%2Fsvg%3E"); }
-.g-growth.dark { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2040h8v16H8zm14-12h8v28h-8zm14-14h8v42h-8z%22%20fill%3D%22%23000071%22%2F%3E%3Cpath%20d%3D%22M40%208h16v16l-5.6-5.6L36%2032.8l-4.4-4.4%2014.4-14.4z%22%20fill%3D%22%23000071%22%2F%3E%3C%2Fsvg%3E"); }
+.g-growth { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2044h8v12H8zm14-8h8v20h-8zm14-6h8v26h-8z%22%20fill%3D%22%230031d8%22%2F%3E%3Cpath%20d%3D%22M10%2034%2024%2020l10%208%2018-18%22%20fill%3D%22none%22%20stroke%3D%22%230031d8%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%2F%3E%3Cpath%20d%3D%22M42%2010h12v12%22%20fill%3D%22none%22%20stroke%3D%22%230031d8%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%2F%3E%3C%2Fsvg%3E"); }
+.g-growth.dark { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2044h8v12H8zm14-8h8v20h-8zm14-6h8v26h-8z%22%20fill%3D%22%23000071%22%2F%3E%3Cpath%20d%3D%22M10%2034%2024%2020l10%208%2018-18%22%20fill%3D%22none%22%20stroke%3D%22%23000071%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%2F%3E%3Cpath%20d%3D%22M42%2010h12v12%22%20fill%3D%22none%22%20stroke%3D%22%23000071%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%2F%3E%3C%2Fsvg%3E"); }
 .g-bolt { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M34%204%2012%2036h14l-4%2024%2022-32H30z%22%20fill%3D%22%230031d8%22%2F%3E%3C%2Fsvg%3E"); }
 .g-bolt.dark { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M34%204%2012%2036h14l-4%2024%2022-32H30z%22%20fill%3D%22%23000071%22%2F%3E%3C%2Fsvg%3E"); }
 .g-chat { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2010h48a4%204%200%200%201%204%204v28a4%204%200%200%201-4%204H26L12%2058V46H8a4%204%200%200%201-4-4V14a4%204%200%200%201%204-4z%22%20fill%3D%22%230031d8%22%2F%3E%3C%2Fsvg%3E"); }
@@ -789,7 +800,7 @@ section > .note:last-child { margin-top: 24px; padding-top: 0; }
 .g-split.dark { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M4%2028h20v8H4zm36-16h20v8H40zm0%2032h20v8H40z%22%20fill%3D%22%23000071%22%2F%3E%3Cpath%20d%3D%22M20%2030h6v-14h18v4H30v10h-6zm0%204h6v14h18v-4H30V34h-6z%22%20fill%3D%22%23000071%22%2F%3E%3C%2Fsvg%3E"); }
 /* === GENERATED:END === */
 
-/* 並列ボードのレビュー欄に完成の条件を入れる（旧「レビュー担当は3人の完成を待つ」から統合） */
+/* 並列ボードのレビュー欄に、逐次確認から最終統合までの流れを入れる */
 .parallel-review .review-checks { margin-top: 8px; text-align: left; }
 .parallel-review .review-checks > div {
   position: relative; padding-left: 24px; margin: 5px 0;
@@ -797,4 +808,26 @@ section > .note:last-child { margin-top: 24px; padding-top: 0; }
 }
 .parallel-review .review-checks > div::before {
   content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700;
+}
+
+/* HTML量の多い一部スライドは、Marpのレイアウト計算で見出しが章ラベルへ重なる。
+   対象だけ上余白を足し、通常スライドと同じ見出し位置へそろえる。 */
+section.header-offset { padding-top: 108px; }
+section.header-title-offset h1 { margin-top: 32px; }
+.inline-header {
+  position: relative;
+  top: -36px;
+  margin: 0 0 -24px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--gray-536);
+}
+section.manual-header-slide { padding-top: 40px; }
+section.manual-header-slide .inline-header {
+  position: static;
+  width: 100%;
+  align-self: stretch;
+  margin: 0 0 12px;
+  text-align: left;
 }
