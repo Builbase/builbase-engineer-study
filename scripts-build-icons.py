@@ -28,6 +28,12 @@ LOGOS = {
     'herdr':   ('herdr.png',   None),
     'macterminal': ('macterminal.png', None),   # macOS 標準の Terminal.app から抽出
     'winterminal': ('winterminal.png', None),   # microsoft/terminal の公式アイコン
+    # 第2回で追加。simple-icons 16.28.0 の hex をそのまま使う
+    'github':   ('github.svg',   '#181717'),
+    'supabase': ('supabase.svg', '#3FCF8E'),
+    'nextjs':   ('nextdotjs.svg','#000000'),
+    'npm':      ('npm.svg',      '#CB3837'),
+    'git':      ('git.svg',      '#F03C2E'),
 }
 
 # AI を人に見立てるグリフ。頭＋肩の標準的な人型
