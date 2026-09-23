@@ -8,7 +8,7 @@ description: builbaseエンジニア勉強会 第2回（60分）
 author: seiji
 style: |
   /* 第2回だけで使う部品。共通テーマ theme/deck.css の変数と寸法に合わせる */
-  .grow { display: grid; gap: 8px; }
+  .grow { display: grid; gap: 6px; }
   .grow > div { display: grid; grid-template-columns: 300px 1fr 110px; align-items: center; gap: 18px; font-size: 21px; }
   .grow > div > span:last-child { text-align: right; color: var(--gray-536); font-size: 19px; }
   .grow i { display: block; height: 24px; border-radius: 4px; background: var(--blue-100); }
@@ -236,7 +236,7 @@ AIは何を知っていて、何を知らないのか
 <div><b>4. 合計</b><span>Messagesを除いた上の6行で約34k</span></div>
 </div>
 </div>
-<p class="cap">2026-09-21に私の環境で/contextを実行した実画面。kは千トークン。上限は約100万トークン。MCP toolsとCustom agentsは今日は扱わない</p>
+<p class="cap">2026-09-21に私の環境で/contextを実行した実画面。kは千トークン。上限は約100万トークン。Autocompact bufferは、次ページの片づけ用に空けてある分</p>
 </div>
 
 <!--
@@ -254,13 +254,14 @@ AIは何を知っていて、何を知らないのか
 <div><span>開始時点（前ページの6行の合計）</span><i class="g" style="width:36%"></i><span>34k</span></div>
 <div><span>指示</span><i class="k" style="width:2%"></i><span>0.05k</span></div>
 <div><span>Read src/api/auth.ts</span><i style="width:12%"></i><span>2.4k</span></div>
-<div><span><span class="cond">条件つきの指示ファイル</span>が1枚（12枚目）</span><i style="width:2%"></i><span>0.4k</span></div>
+<div><span>別の指示ファイルが1枚</span><i style="width:2%"></i><span>0.4k</span></div>
 <div><span>Read auth.test.ts</span><i style="width:8%"></i><span>1.6k</span></div>
 <div><span>Edit auth.ts</span><i style="width:2%"></i><span>0.4k</span></div>
 <div><span>npm testの出力</span><i style="width:6%"></i><span>1.2k</span></div>
 <div><span>AIの返答</span><i class="k" style="width:2%"></i><span>0.4k</span></div>
 </div>
 <div class="rule">返答のたびに、ここまでの全部をモデルへ送り直す</div>
+<p class="cap">長い作業を続けると数十万トークンに達し、次のページの片づけが起きる</p>
 </div>
 
 <!--
@@ -318,7 +319,7 @@ CLAUDE.md、条件なしのrules、memoryはファイルなので読み直され
 # CLAUDE.mdは、新しく入った人に渡す申し送りメモ
 
 <div class="fig">
-<div class="analogy"><b>たとえると</b>出社したらまず読む申し送り。何のプロジェクトで、どう動いてほしいかを書いておく</div>
+<div class="analogy"><b>たとえると</b>出社したらまず読む申し送り。ここに書いていないことは、AIは知らないまま動く</div>
 <div class="plan-layout">
 <div class="plan-paper">
 <div class="plan-paper-title">CLAUDE.md</div>
@@ -347,10 +348,10 @@ CLAUDE.md、条件なしのrules、memoryはファイルなので読み直され
 
 <!-- _class: content-center -->
 
-# rulesは、その棚を開けたときだけ目に入る注意書き
+# rulesは、1話題ごとに分けた指示。条件も付けられる
 
 <div class="fig">
-<div class="analogy"><b>たとえると</b>「この棚を開けたら、中のものは必ず元に戻す」と棚の扉に貼った紙</div>
+<div class="analogy"><b>たとえると</b>基本は壁に貼る注意書き。条件を付ければ、その棚を開けたときだけ出てくる</div>
 <div class="scene-grid">
 <div class="ticket code">
 <div><b>場所</b><span>.claude/rules/api.md</span></div>
@@ -376,7 +377,7 @@ CLAUDE.md、条件なしのrules、memoryはファイルなので読み直され
 # memoryは、AIが書き、人も直せる業務日誌
 
 <div class="fig">
-<div class="analogy"><b>たとえると</b>「あの人はこう直された」と書き留めておく日誌。次の出社時に見出しだけ読み返す</div>
+<div class="analogy"><b>たとえると</b>「今日はここを直された」と自分で書き留める日誌。次の出社時に見出しだけ読み返す</div>
 <div class="plan-layout paper-wide">
 <div class="plan-paper">
 <div class="plan-paper-title">~/.claude/projects/&lt;project&gt;/memory/</div>
@@ -443,7 +444,7 @@ CLAUDE.md、条件なしのrules、memoryはファイルなので読み直され
 <text x="610" y="228" text-anchor="middle" class="s">Read、Edit、Bash、Grep。外部サービスへの接続はMCP</text>
 </svg>
 </div>
-<div class="rule">この繰り返しがエージェントループ。料理して、味見して、直すのと同じ</div>
+<div class="rule">この繰り返しがエージェントループ。終わったと判断するまで何周でも回る</div>
 </div>
 
 <!--
@@ -464,15 +465,15 @@ MCPはModel Context Protocolの略で、GitHubやDBなど外部サービスを�
 <div class="pair">
 <div class="pair-side">
 <b>完了条件なし</b>
-<span>「ログインを直して」だけ<br>→ 修正して「直しました」で止まる。動くかどうかは人が確かめる</span>
+<span>「この処理を速くして」だけ<br>→ 書き換えて「速くしました」で止まる。どれだけ速いかは測っていない</span>
 </div>
 <div class="pair-link">vs</div>
 <div class="pair-side on">
 <b>完了条件あり</b>
-<span>CLAUDE.mdに「変更後はnpm testを通す」がある<br>→ テストを実行し、失敗があれば直し、通ってから止まる</span>
+<span>「実行時間を測り、前より速くなった数字を出して」<br>→ 測り、遅ければ直し、数字を出してから止まる</span>
 </div>
 </div>
-<div class="rule">完了条件は、指示に書いても、CLAUDE.mdに書いてもよい</div>
+<div class="rule">「何が確かめられたら終わりか」まで渡す。指示に書いても、CLAUDE.mdに書いてもよい</div>
 </div>
 
 <!--
@@ -494,7 +495,7 @@ AIは条件を自分で確かめる材料にする
 </div>
 <div class="numbered">
 <div><b>1. 起動のきっかけ</b><span>決まった時刻、PR（変更の提案）が届いたとき、テストの失敗。人が指示を打たなくても動く</span></div>
-<div><b>2. 確かめる手段</b><span>テスト、lint（書き方の自動点検）、別のエージェントによるレビュー</span></div>
+<div><b>2. 確かめる手段</b><span>テスト、lint（書き方の自動点検）、別のAIによるレビュー</span></div>
 <div><b>3. 記録と引き継ぎ</b><span>進み具合をファイルに残し、次の周に渡す</span></div>
 </div>
 </div>
@@ -540,7 +541,7 @@ AIは条件を自分で確かめる材料にする
 <text x="576" y="284" text-anchor="middle" class="s" style="fill:#e6e6e6">文章を読んで、次の行動を決める本体</text>
 </svg>
 </div>
-<div class="rule">ハーネスは馬具の意味。同じ馬でも、手綱と鞍の付け方で走り方が変わる</div>
+<div class="rule">ハーネスは馬具の意味。馬（モデル）は替えられないが、手綱と鞍は自分で選べる</div>
 </div>
 
 <!--
@@ -582,10 +583,9 @@ hookの正式名（PreToolUse、PostToolUse）は22枚目で出す。settings.js
 
 <!-- _class: content-center -->
 
-# skillsは、棚にしまってある手順書。必要なときだけ開く
+# skillsは、必要なときだけ開く手順書
 
 <div class="fig">
-<div class="analogy"><b>たとえると</b>背表紙（説明文）はいつも見えていて、中身は使うときだけ開くマニュアル</div>
 <div class="scene-grid">
 <div class="ticket code">
 <div><b>場所</b><span>~/.claude/skills/gijiroku/SKILL.md</span></div>
@@ -674,11 +674,11 @@ hookの正式名（PreToolUse、PostToolUse）は22枚目で出す。settings.js
 </div>
 <div class="numbered">
 <div><b>1. 書く量</b><span>数行から。最初は1つの条件だけでよい</span></div>
-<div><b>2. 誰が書くか</b><span>AIに書かせてよい。前ページの画面も、AIに書かせたhookが止めている</span></div>
+<div><b>2. 誰が書くか</b><span>AIに書かせてよい。「.envを読むコマンドを止めるhookを作って」と頼む</span></div>
 <div><b>3. 止まらなかったら</b><span>条件を足す。抜け道が見つかるたびに育てる</span></div>
 </div>
 </div>
-<p class="cap">前ページの画面を止めたのが、このhook。私のhookは20本あるが、始まりはどれも数行だった</p>
+<p class="cap">前ページの画面を止めたのも、AIに書かせたこのhook。私のhookは20本あるが、始まりはどれも数行だった</p>
 </div>
 
 <!--
@@ -696,7 +696,7 @@ hookの正式名（PreToolUse、PostToolUse）は22枚目で出す。settings.js
 # settings.jsonは、AIの運用設定をまとめた1枚
 
 <div class="fig">
-<div class="analogy"><b>たとえると</b>permissionsは入館証。入れる部屋、入れない部屋、受付に聞く部屋を決めておく</div>
+<div class="analogy"><b>たとえると</b>permissionsは部屋ごとの鍵。開けてよい部屋、開けられない部屋、受付に聞く部屋を決める</div>
 <div class="scene-grid">
 <div class="ticket code">
 <div><b>permissions</b><span>allow（許す）、deny（禁じる）、ask（毎回聞く）</span></div>
@@ -786,7 +786,7 @@ hookの正式名（PreToolUse、PostToolUse）は22枚目で出す。settings.js
 <div class="logos chips"><span class="ico ico-lg i-claude"></span><span class="ico ico-lg i-codex"></span></div>
 </div>
 </div>
-<p class="cap">共通原則は、ClaudeとCodexの両方から読む共通のファイル。実数（2026-09-21）: memory 87件、rules 4本、skills 20本、hooks 20本、deny 21件</p>
+<p class="cap">共通原則は、CLAUDE.mdから読み込む別ファイル。ClaudeとCodexが同じものを読む。実数（2026-09-21）: memory 87件、rules 4本、skills 20本、hooks 20本、deny 21件</p>
 </div>
 
 <!--
@@ -836,7 +836,7 @@ Claude（Anthropic）とCodex（OpenAI）の2製品で同じ設定を使い回�
 <div class="card">
 <span class="gi lg g-split"></span>
 <div class="t">プログラム経由も止める</div>
-<div class="d">「python -c」などに読ませる抜け道もhookで止める</div>
+<div class="d">「python -c」（1行のプログラムを実行する書き方）の抜け道もhookで止める</div>
 </div>
 </div>
 <p class="cap">AIは悪気なく「確認のため」に読もうとする。読まれた文章はAI会社のサーバーへ送られ、記録にも残る。だから読む前に止める</p>
@@ -928,7 +928,7 @@ Claude（Anthropic）とCodex（OpenAI）の2製品で同じ設定を使い回�
 <colgroup><col style="width:24%"><col style="width:40%"><col style="width:15%"><col style="width:21%"></colgroup>
 <thead><tr><th></th><th>一言で</th><th>誰が書く</th><th>いつ効く</th></tr></thead>
 <tbody>
-<tr><th>コンテキスト</th><td>AIが1回の返答で読める文章の全部</td><td>製品と人と会話</td><td>毎回</td></tr>
+<tr><th>コンテキスト</th><td>AIが1回の返答で読める文章の全部</td><td>製品、人、会話の蓄積</td><td>毎回</td></tr>
 <tr><th>CLAUDE.md</th><td>セッションの最初に読まれる指示ファイル</td><td>人</td><td>開始時と圧縮後</td></tr>
 <tr><th>rules</th><td>1話題ごとに分けた指示。条件も付けられる</td><td>人</td><td>常に。条件付きなら対象を読んだとき</td></tr>
 <tr><th>memory</th><td>AIが自分で残す学び</td><td>AI</td><td>開始時に索引を読む</td></tr>
