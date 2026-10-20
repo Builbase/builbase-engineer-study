@@ -34,6 +34,18 @@ LOGOS = {
     'nextjs':   ('nextdotjs.svg','#000000'),
     'npm':      ('npm.svg',      '#CB3837'),
     'git':      ('git.svg',      '#F03C2E'),
+    # 第3回で追加。simple-icons 16.28.0 の hex をそのまま使う（AWSとAzureは収録が無いので文字で表す）
+    'postgresql': ('postgresql.svg', '#4169E1'),
+    'mysql':      ('mysql.svg',      '#4479A1'),
+    'sqlite':     ('sqlite.svg',     '#003B57'),
+    'mongodb':    ('mongodb.svg',    '#47A248'),
+    'redis':      ('redis.svg',      '#FF4438'),
+    'firebase':   ('firebase.svg',   '#DD2C00'),
+    'googlecloud':('googlecloud.svg','#4285F4'),
+    'vercel':     ('vercel.svg',     '#000000'),
+    'render':     ('render.svg',     '#000000'),
+    'cloudflare': ('cloudflare.svg', '#F38020'),
+    'neon':       ('neon.svg',       '#34D59A'),
 }
 
 # AI を人に見立てるグリフ。頭＋肩の標準的な人型
