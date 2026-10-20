@@ -29,18 +29,18 @@ DBとクラウドの選び方は同じ表の形（観点、問い、傾向）に
 
 | 内容 | ページ | 確認先 |
 |---|---|---|
-| OWASP Top 10:2025の順位（A01 Broken Access Control、A03 Software Supply Chain Failures、A05 Injection） | 37、39、40 | https://top10.owasp.org/2025 |
-| XSS（CWE-79）とSQLインジェクション（CWE-89）はA05に含まれる | 39 | https://top10.owasp.org/2025/A05_2025-Injection/ |
-| CSRF（CWE-352）はA01に含まれる | 39 | https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/ |
-| VercelのHobbyは非商用の個人利用に限る | 32 | https://vercel.com/docs/plans/hobby |
+| OWASP Top 10:2025の順位（A01 Broken Access Control、A03 Software Supply Chain Failures、A05 Injection） | 41、43、44 | https://top10.owasp.org/2025 |
+| XSS（CWE-79）とSQLインジェクション（CWE-89）はA05に含まれる | 43 | https://top10.owasp.org/2025/A05_2025-Injection/ |
+| CSRF（CWE-352）はA01に含まれる | 43 | https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/ |
+| VercelのHobbyは非商用の個人利用に限る | 35 | https://vercel.com/docs/plans/hobby |
 
 確認していないもの（当日までに確かめるか、表現を弱める）:
 
 - スクラムガイド2020の役割名の訳（「開発者」）と、スプリントが1か月以内であること
-- 責任共有モデル（31枚目）の「の」「における」の言い回しはAWSの日本語ページに合わせたい
+- 責任共有モデル（34枚目）の「の」「における」の言い回しはAWSの日本語ページに合わせたい
 - 準委任の成果完成型（2020年民法改正）の説明（9枚目のコメント）
 
 ## 未決事項
 
-- 本文33枚で約1.5分/枚。リハーサルで時間を測り、縮める候補（README）を使うか決める
+- 本文33枚と問い5枚。リハーサルで時間を測り、縮める候補（README）を使うか決める
 - 実演2のSupabaseプロジェクト（demo-script.mdの準備を参照）

@@ -189,6 +189,13 @@ style: |
   .row.c3 .card .t { font-size: 27px; margin: 16px 0 10px; }
   .row.c3 .card .d { font-size: 20px; }
   section { text-wrap: pretty; }
+  /* 考えてみよう（各章の最後の問い）。答えはコメントの[答え] */
+  .lead.q { border-left-color: #b45309; background: #fdf6ec; }
+  .lead.q b { color: #b45309; }
+  .stack .h { flex-direction: column; line-height: 1.3; }
+  .stack + .cap { margin-top: 20px; }
+  .stack .h small { font-size: 14px; font-weight: 400; color: var(--gray-700); }
+  .card .opt { align-self: center; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 26px; font-weight: 700; }
   .vsteps > div.ng { border-color: var(--red); background: #fdeeee; }
   .vsteps .ng i { background: var(--red); }
   .vsteps .ng b { color: var(--red); }
@@ -280,7 +287,7 @@ style: |
 # V字モデルでは、作る前に「どう確かめるか」も決めておく
 
 <div class="fig">
-<div class="lead"><b>ひとことで</b>左で決めたことを、右で同じ高さのテストが確かめる</div>
+<div class="lead"><b>ひとことで</b>ウォーターフォールのテストの組み方。左で決めたことを、右の同じ高さで確かめる</div>
 <div class="svgfig">
 <svg width="1152" height="380" viewBox="0 0 1152 380" xmlns="http://www.w3.org/2000/svg">
 <path d="M150 40 L290 140 L430 240 L576 330 L722 240 L862 140 L1002 40" fill="none" stroke="#cccccc" stroke-width="4"/>
@@ -410,7 +417,7 @@ style: |
 <thead><tr><th>観点</th><th>ウォーターフォール</th><th>アジャイル</th></tr></thead>
 <tbody>
 <tr><th>やること</th><td>最初に決められる</td><td>作りながら変わる</td></tr>
-<tr><th>お金の払い方</th><td>完成品に払う契約（請負）向き</td><td>作業量に払う契約（準委任）向き</td></tr>
+<tr><th>契約の形</th><td>完成に責任を持つ契約（請負）向き</td><td>作業に責任を持つ契約（準委任）向き</td></tr>
 <tr><th>向く例</th><td>銀行や役所のシステム、法律の改正対応</td><td>新しいサービス、社内ツール</td></tr>
 </tbody>
 </table>
@@ -449,6 +456,22 @@ style: |
 
 ---
 
+# 何が欲しいかまだはっきりしない社内ツールは、どちらで作る？
+
+<div class="fig">
+<div class="lead q"><b>考えてみよう</b>30秒考えてから、答えを聞く</div>
+<div class="row c2">
+<div class="card"><span class="opt">A</span><div class="t">ウォーターフォール</div><div class="d">最初に全部決めてから作る</div></div>
+<div class="card"><span class="opt">B</span><div class="t">アジャイル</div><div class="d">少しずつ作って見せて直す</div></div>
+</div>
+</div>
+
+<!--
+[答え] B。欲しいものが決まっていないので、作って見せながら決める。範囲と予算だけ先に決める混合型もあり
+-->
+
+---
+
 <!-- _class: chapter -->
 <!-- header: '2. Webの仕組み' -->
 
@@ -465,10 +488,10 @@ URLを開いたとき、裏で何が起きているか
 <div class="fig">
 <div class="lead"><b>ひとことで</b>住所を調べ、つなぎ、鍵をかけ、頼んで受け取り、画面に描く</div>
 <div class="vsteps">
-<div><i>1</i><b>住所を調べる<em>DNS</em></b><span>名前を、数字の住所（IPアドレス）に変える</span></div>
+<div><i>1</i><b>住所を調べる<em>DNS</em></b><span>ネットの電話帳で、名前から数字の住所（IPアドレス）を調べる</span></div>
 <div><i>2</i><b>つなぐ<em>TCP</em></b><span>相手のコンピュータと通信路を作る</span></div>
 <div><i>3</i><b>鍵をかける<em>TLS</em></b><span>やりとりを暗号化する</span></div>
-<div class="on"><i>4</i><b>頼む・受け取る<em>HTTP</em></b><span>ページの中身をもらう</span></div>
+<div class="on"><i>4</i><b>頼む・受け取る<em>HTTP</em></b><span>ページの中身をもらう（次のページで説明）</span></div>
 <div><i>5</i><b>描く<em>レンダリング</em></b><span>受け取った中身を画面に表示する</span></div>
 </div>
 <div class="rule">URLのhttpsの「s」は、3の「鍵をかける」をしている印</div>
@@ -497,7 +520,7 @@ example.comのような名前は人間向け。コンピュータは数字の住
 <code class="output">[{"title":"牛乳を買う","done":false}]</code>
 </div>
 <div class="numbered sm">
-<div><b>メソッド（何をしたいか）</b><span>GETは見せて、POSTは作って、DELETEは消して</span></div>
+<div><b>メソッド（何をしたいか）</b><span>GETは見せて、POSTは作って、PATCHは変えて、DELETEは消して</span></div>
 <div><b>ステータスコード（結果）</b><span>200は成功、404は見つからない、500はサーバー側の失敗</span></div>
 <div><b>ヘッダ（添え書き）</b><span>データの形式やログイン情報など、本文以外の情報</span></div>
 </div>
@@ -516,7 +539,7 @@ example.comのような名前は人間向け。コンピュータは数字の住
 # HTTPは前のやりとりを覚えないので、Cookieで名乗る
 
 <div class="fig">
-<div class="lead"><b>ひとことで</b>ログインすると会員番号（セッションID）をもらい、以後は毎回それを見せる</div>
+<div class="lead"><b>ひとことで</b>Cookieはブラウザが預かるメモ。ログインでもらった会員番号を毎回見せる</div>
 <div class="svgfig">
 <svg width="1152" height="340" viewBox="0 0 1152 340" xmlns="http://www.w3.org/2000/svg">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#4d4d4d"/></marker></defs>
@@ -587,16 +610,32 @@ RESTは作法で、厳密な規格ではない
 <div class="step">フロントエンド<small>ブラウザに出る画面<br><span class="ico i-nextjs"></span>Next.js、React</small></div>
 <div class="arw">⇄<br><small style="font-size:15px">HTTP</small></div>
 <div class="step on">バックエンド<small>ログイン確認や計算<br>Node.js、Python、Go</small></div>
-<div class="arw">⇄<br><small style="font-size:15px">SQL</small></div>
+<div class="arw">⇄<br><small style="font-size:15px">SQL<br>（第3章）</small></div>
 <div class="step">DB<small>データを保存する<br><span class="ico i-postgresql"></span>PostgreSQL</small></div>
 </div>
-<div class="rule">ブラウザのコードは誰でも読める。秘密の値と権限の判断はバックエンドへ</div>
+<div class="rule">画面のコードはブラウザに送られ、誰でも見られる。秘密の値と権限の判断はバックエンドへ</div>
 </div>
 
 <!--
 [話すこと] 役割を分けると、画面だけ、処理だけを別々に変えられる。
 SupabaseはDBに加えてAPIとログインをまとめて用意してくれるので、バックエンドの一部を書かずに済む（第4章のBaaS）。
 [実演1] ここでブラウザの開発者ツール（Networkタブ）を開き、ページを再読み込みしてリクエストの一覧、ステータス、ヘッダを見せる。2分
+-->
+
+---
+
+# APIキー（秘密の文字列）は、どこに置く？
+
+<div class="fig">
+<div class="lead q"><b>考えてみよう</b>APIキーは、外部サービスを使うための合鍵。漏れると他人に使われる</div>
+<div class="row c2">
+<div class="card"><span class="opt">A</span><div class="t">フロントエンド</div><div class="d">ブラウザで動く画面のコード</div></div>
+<div class="card"><span class="opt">B</span><div class="t">バックエンド</div><div class="d">サーバー側の設定（環境変数など）</div></div>
+</div>
+</div>
+
+<!--
+[答え] B。ブラウザに送ったコードは誰でも読める
 -->
 
 ---
@@ -630,11 +669,11 @@ SupabaseはDBに加えてAPIとログインをまとめて用意してくれる�
 <div>
 <div class="dbt-title">todos（やること）</div>
 <table class="dbt">
-<thead><tr><th class="pk">id 🔑</th><th class="fk">user_id →</th><th>title</th></tr></thead>
+<thead><tr><th class="pk">id 🔑</th><th class="fk">user_id →</th><th>title</th><th>done</th></tr></thead>
 <tbody>
-<tr><td class="pk">10</td><td class="fk">1</td><td>牛乳を買う</td></tr>
-<tr><td class="pk">11</td><td class="fk">1</td><td>資料を送る</td></tr>
-<tr><td class="pk">12</td><td class="fk">2</td><td>会議の準備</td></tr>
+<tr><td class="pk">10</td><td class="fk">1</td><td>牛乳を買う</td><td>false</td></tr>
+<tr><td class="pk">11</td><td class="fk">1</td><td>資料を送る</td><td>true</td></tr>
+<tr><td class="pk">12</td><td class="fk">2</td><td>会議の準備</td><td>false</td></tr>
 </tbody>
 </table>
 </div>
@@ -685,9 +724,8 @@ SupabaseはDBに加えてAPIとログインをまとめて用意してくれる�
 <div class="lead"><b>ひとことで</b>「どの表の、どの行を、どうしたいか」を英語に近い文で書く</div>
 <div class="terminal-screen full">
 <div class="terminal-bar">SQL</div>
-<code class="dim">-- 取り出す: 終わっていないTodoを、持ち主の名前と一緒に</code>
-<code>SELECT todos.title, users.name FROM todos</code>
-<code class="output">  JOIN users ON users.id = todos.user_id WHERE todos.done = false;</code>
+<code class="dim">-- 取り出す: 終わっていない（done = false）Todoのタイトル</code>
+<code class="output">SELECT title FROM todos WHERE done = false;</code>
 <code class="dim">-- 追加する</code>
 <code class="output">INSERT INTO todos (user_id, title) VALUES (1, '請求書を出す');</code>
 <code class="dim">-- 変える。WHERE（どの行か）を忘れると、全部の行が変わる</code>
@@ -696,7 +734,7 @@ SupabaseはDBに加えてAPIとログインをまとめて用意してくれる�
 </div>
 
 <!--
-[話すこと] JOINは2つの表を番号でつないで1つの表のように読むこと。
+[話すこと] 2つの表を番号でつないで読むときはJOINを使う（例: SELECT todos.title, users.name FROM todos JOIN users ON users.id = todos.user_id）。
 プログラムからDBを扱う道具（ORM。Prisma、Drizzleなど）を使っても、裏で動くのはSQL。読めると調べ物が速い
 -->
 
@@ -804,7 +842,7 @@ SupabaseはDBに加えてAPIとログインをまとめて用意してくれる�
 <div class="tool-list">
 <div><span class="ico i-mongodb"></span><b>MongoDB</b><span>ドキュメント型の代表</span></div>
 <div><span class="ico i-firebase"></span><b>Firestore</b><span>Googleのドキュメント型。画面へすぐ反映</span></div>
-<div><span class="ico i-redis"></span><b>Redis</b><span>メモリ上で動く。一時的な保存に使う</span></div>
+<div><span class="ico i-redis"></span><b>Redis</b><span>速いが、止まると消えることがある。一時的な保存に使う</span></div>
 </div>
 </div>
 </div>
@@ -893,6 +931,22 @@ FirestoreやDynamoDBは、そのクラウドの中でしか使えない（第4�
 
 ---
 
+# ネットショップの在庫と注文を保存したい。どれを選ぶ？
+
+<div class="fig">
+<div class="lead q"><b>考えてみよう</b>30秒考えてから、答えを聞く</div>
+<div class="row c2">
+<div class="card"><span class="opt">A</span><div class="t">PostgreSQL</div><div class="d">RDB</div></div>
+<div class="card"><span class="opt">B</span><div class="t">Redis</div><div class="d">メモリ上のキーバリュー</div></div>
+</div>
+</div>
+
+<!--
+[答え] A。在庫と注文を1つのトランザクションでまとめて更新でき、表同士のずれを防ぎやすい。Redisは主に一時的な保存（キャッシュ）に併用する
+-->
+
+---
+
 <!-- _class: chapter -->
 <!-- header: '4. クラウド' -->
 
@@ -933,14 +987,14 @@ FirestoreやDynamoDBは、そのクラウドの中でしか使えない（第4�
 <div class="fig">
 <div class="lead"><b>ひとことで</b>右へ行くほど任せる範囲が広く楽になるが、自由は減る</div>
 <div class="stack">
-<div></div><div class="h">オンプレ</div><div class="h">IaaS</div><div class="h">PaaS</div><div class="h">SaaS</div>
+<div></div><div class="h">オンプレ<small>全部自分</small></div><div class="h">IaaS<small>場所と機械を借りる</small></div><div class="h">PaaS<small>動かす環境を借りる</small></div><div class="h">SaaS<small>完成品を借りる</small></div>
 <div class="lb">アプリ</div><div class="u">自分</div><div class="u">自分</div><div class="u">自分</div><div class="p">会社</div>
 <div class="lb">データ</div><div class="u">自分</div><div class="u">自分</div><div class="u">自分</div><div class="u">自分</div>
-<div class="lb">OSなど</div><div class="u">自分</div><div class="u">自分</div><div class="p">会社</div><div class="p">会社</div>
+<div class="lb">OS</div><div class="u">自分</div><div class="u">自分</div><div class="p">会社</div><div class="p">会社</div>
 <div class="lb">機械・建物</div><div class="u">自分</div><div class="p">会社</div><div class="p">会社</div><div class="p">会社</div>
-<div></div><div class="ex">自社のサーバー</div><div class="ex">AWSのEC2<br>（仮想のサーバー）</div><div class="ex">Vercel、Render<br>（コードを置くだけ）</div><div class="ex">Gmail、Slack<br>（使うだけ）</div>
+<div></div><div class="ex">自社のサーバー</div><div class="ex">AWSのEC2<br>（借りるサーバー）</div><div class="ex">Vercel、Render<br>（コードを置くだけ）</div><div class="ex">Gmail、Slack<br>（使うだけ）</div>
 </div>
-<p class="cap">Supabaseのように、ログインやDBを丸ごと借りるものはBaaSと呼ぶ</p>
+<p class="cap">OSはWindowsやLinuxのような土台のソフト。ログインやDBを丸ごと借りるもの（Supabase）はBaaSと呼ぶ</p>
 </div>
 
 <!--
@@ -990,7 +1044,7 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 <div class="fig">
 <div class="lead"><b>ひとことで</b>個人開発や試作はここから。AWSなどの大手は必要になってから</div>
 <div class="tool-list one">
-<div><span class="ico i-vercel"></span><b>Vercel</b><span>画面のサイトを公開する。GitHubに上げると自動で公開される。無料プランは個人の非商用だけ</span></div>
+<div><span class="ico i-vercel"></span><b>Vercel</b><span>画面と、短い処理（API）を公開する。GitHubに上げると自動で公開。無料プランは個人の非商用だけ</span></div>
 <div><span class="ico i-render"></span><b>Render</b><span>サーバーのプログラムや定期実行を動かす</span></div>
 <div><span class="ico i-cloudflare"></span><b>Cloudflare</b><span>世界中の拠点からサイトを速く配る。ドメインの管理も</span></div>
 <div><span class="ico i-supabase"></span><b>Supabase</b><span>PostgreSQLに、ログイン機能とファイル置き場が付いたもの</span></div>
@@ -1001,7 +1055,7 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 <!--
 [Sources]
 - https://vercel.com/docs/plans/hobby （Hobbyは非商用の個人利用に限る。2026-10-20確認）
-[話すこと] 仕事の案件をVercelの無料プランで公開してはいけない。有料のProにする。
+[話すこと] 仕事の案件や、個人でも収益を得るなどの商用利用は、Vercelの無料プランでは公開できない。有料のProにする。
 大手3社は同じ役割のサービスを別の名前で持っている（例: 仮想サーバーはEC2、Compute Engine、Virtual Machines）。1つで考え方を覚えれば他も読める
 -->
 
@@ -1016,7 +1070,7 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 <colgroup><col style="width:22%"><col style="width:42%"><col style="width:36%"></colgroup>
 <thead><tr><th>観点</th><th>自分に聞くこと</th><th>答えによる選び方</th></tr></thead>
 <tbody>
-<tr><th>動かすもの</th><td>画面のサイトか、ずっと動くプログラムか</td><td>画面ならVercel、常に動くならRender</td></tr>
+<tr><th>動かすもの</th><td>画面のサイトか、ずっと動くプログラムか</td><td>画面と短い処理はVercel、ずっと動く処理はRender</td></tr>
 <tr><th>触る範囲</th><td>OSまで自分で設定する必要があるか</td><td>なければPaaS、あればIaaS</td></tr>
 <tr><th>費用</th><td>月額固定か、使った分だけか</td><td>使う人が少ないうちは使った分だけが安い</td></tr>
 <tr><th>引っ越し</th><td>その会社だけの機能にどこまで頼るか</td><td>共通の技術なら移りやすい</td></tr>
@@ -1049,13 +1103,7 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 <div>
 <div class="lbl">育ったあと<small>利用者と機能が増えた</small></div>
 <div class="flow sm">
-<div class="step">配信<small>CloudFront</small></div>
-<div class="arw">→</div>
-<div class="step">プログラム<small>ECS</small></div>
-<div class="arw">→</div>
-<div class="step">DB<small>RDS（PostgreSQL）</small></div>
-<div class="arw">＋</div>
-<div class="step">ファイル<small>S3</small></div>
+<div class="step">大手クラウドへ引っ越す<small>AWSやGoogle Cloudで、必要な部品を自分で組み合わせる</small></div>
 </div>
 </div>
 </div>
@@ -1063,7 +1111,7 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 </div>
 
 <!--
-[話すこと] 育ったあとの例はAWSで書いた。Google CloudならCloud RunとCloud SQL。
+[話すこと] AWSなら、配信はCloudFront、プログラムはECS、DBはRDS、ファイルはS3を組み合わせる。Google CloudならCloud RunとCloud SQL。
 引っ越すのは、費用、性能、細かい権限の設定、会社のルールのどれかが理由になるとき
 -->
 
@@ -1097,6 +1145,23 @@ SaaSでも、データとアカウントの管理は自分の責任（次のペ�
 
 <!--
 [話すこと] IaCはInfrastructure as Code。サーバーなどの構成をコードに書いて作る方法（Terraformなど）。画面で手作業で作ると、何を作ったか誰も分からなくなる
+-->
+
+---
+
+# 個人開発のWebアプリを公開したい。まず何を使う？
+
+<div class="fig">
+<div class="lead q"><b>考えてみよう</b>1人で、設定の手間をかけずに小さく試したい</div>
+<div class="row c3">
+<div class="card"><span class="opt">A</span><div class="t">サーバーを買う</div><div class="d">自分で機械を用意する</div></div>
+<div class="card"><span class="opt">B</span><div class="t">Vercel＋Supabase</div><div class="d">手軽なサービスを借りる</div></div>
+<div class="card"><span class="opt">C</span><div class="t">AWSで全部組む</div><div class="d">部品を自分で組み合わせる</div></div>
+</div>
+</div>
+
+<!--
+[答え] B。小さく始め、利用者が増えたら大手クラウドへの引っ越しを考える。お金をもらうなど商用で使うなら、Vercelは有料のProにする
 -->
 
 ---
@@ -1153,16 +1218,17 @@ URLの数字を変えたら他人のデータが見えた、は認可の確か�
 <div class="lead"><b>ひとことで</b>APIキーは家の鍵と同じ。GitHubやSlackに貼らない</div>
 <div class="scene-grid">
 <div class="terminal-screen full">
-<div class="terminal-bar">ターミナル</div>
+<div class="terminal-bar">ターミナル（Gitの記録を調べる）</div>
 <code><span class="prompt">$</span> cat .gitignore</code>
 <code class="output">.env.local</code>
 <code><span class="prompt">$</span> git log --oneline -- .env.local</code>
 <code class="output">a1b2c3d 設定ファイルを追加</code>
-<code class="dim">↑ 一度コミットすると、消しても履歴に残る</code>
+<code class="dim">↑ .gitignoreに書く前に保存（コミット）した</code>
+<code class="dim">  ので、今も履歴に残っている</code>
 </div>
 <div class="numbered sm">
-<div><b>パスワード</b><span>ハッシュという、元に戻せない形に変えて保存する</span></div>
-<div><b>秘密の文字列</b><span>APIキーは.env.localに書き、Gitに入れない</span></div>
+<div><b>パスワード</b><span>元に戻せない形（ハッシュ）で保存し、ログイン時は専用の関数で照合する</span></div>
+<div><b>秘密の文字列</b><span>APIキーは.env.localに書き、Gitに入れないファイルの一覧（.gitignore）に足す</span></div>
 <div><b>漏れたら</b><span>消すより先に、そのキーを無効にして作り直す</span></div>
 </div>
 </div>
@@ -1184,9 +1250,9 @@ URLの数字を変えたら他人のデータが見えた、は認可の確か�
 <colgroup><col style="width:25%"><col style="width:37.5%"><col style="width:37.5%"></colgroup>
 <thead><tr><th>攻撃</th><th>何が起きるか</th><th>防ぎ方</th></tr></thead>
 <tbody>
-<tr><th>SQLインジェクション</th><td>入力した文字がSQLとして動き、データを盗まれる、消される</td><td>入力をSQLの文に直接つなげない（プレースホルダー）</td></tr>
-<tr><th>XSS</th><td>入力したプログラムが、他の人のブラウザで動く</td><td>表示時に無害な文字へ変える（文字の表示はReactが自動）</td></tr>
-<tr><th>CSRF</th><td>ログイン中の人に、別のサイトから勝手な操作をさせる</td><td>操作ごとの合言葉（CSRFトークン）、Cookieの設定</td></tr>
+<tr><th>SQLインジェクション</th><td>入力欄にSQLの命令を書かれ、データを盗まれる、消される</td><td>入力を「ただの文字」として扱う（プレースホルダー）</td></tr>
+<tr><th>XSS</th><td>掲示板に書かれたプログラムが、見た人のブラウザで動く</td><td>表示時に無害な文字へ変える（文字の表示はReactが自動）</td></tr>
+<tr><th>CSRF</th><td>罠のサイトを開いただけで、ログイン中のサイトで勝手に操作される</td><td>操作ごとに合言葉を確かめる（CSRFトークン）</td></tr>
 </tbody>
 </table>
 </div>
@@ -1210,13 +1276,16 @@ ReactでdangerouslySetInnerHTMLを使うと自動の変換が外れる。名前�
 <div class="pair top">
 <div class="pair-side">
 <b>権限は最小に</b>
-<span>Supabaseは、行ごとに「誰が読めるか」を決められる（RLS）</span>
-<div class="mono">alter table todos<br>  enable row level security;<br>create policy "own todos" on todos<br>  for select using (<br>    (select auth.uid()) = user_id<br>  );</div>
+<span>必要な操作と範囲だけを許す</span>
+<ul>
+<li>閲覧だけの人に、削除の権限を渡さない</li>
+<li>Supabaseでは「自分のTodoだけ読める」というルールを表に設定できる（RLS）</li>
+</ul>
 </div>
 <div class="pair-link">＋</div>
 <div class="pair-side on">
 <b>部品（パッケージ）を疑う</b>
-<span>npmなどで入れる部品に、悪意あるコードが混ざる攻撃がある</span>
+<span>npm（部品を入れる道具）などで入れる部品に、悪意あるコードが混ざる攻撃がある</span>
 <ul>
 <li>使う版を固定する（lockfile）</li>
 <li>必要のない部品を入れない</li>
@@ -1230,9 +1299,26 @@ ReactでdangerouslySetInnerHTMLを使うと自動の変換が外れる。名前�
 [Sources]
 - https://supabase.com/docs/guides/database/postgres/row-level-security
 - https://top10.owasp.org/2025 （A03 Software Supply Chain Failures）
-[話すこと] RLSの例は「自分のTodoだけ読める」というルール。user_idには、Supabaseのログイン利用者のID（uuid型）が入る。
+[話すこと] RLSの設定例: alter table todos enable row level security; create policy "own todos" on todos for select using ((select auth.uid()) = user_id);
+user_idには、Supabaseのログイン利用者のID（uuid型）が入る。
 SupabaseはブラウザからDBへ直接アクセスできるので、公開スキーマ（public）の表でRLSを無効にすると、APIキーだけで読める状態になりうる。
 部品を狙う攻撃を供給網攻撃と呼ぶ。Webの弱点の3位（A03）
+-->
+
+---
+
+# URLの数字を変えたら、他人のTodoが見えた。足りないのは？
+
+<div class="fig">
+<div class="lead q"><b>考えてみよう</b>ログインはできている。そのうえで、足りないのはどっち？</div>
+<div class="row c2">
+<div class="card"><span class="opt">A</span><div class="t">認証</div><div class="d">あなたは誰か</div></div>
+<div class="card"><span class="opt">B</span><div class="t">認可</div><div class="d">何をしてよいか</div></div>
+</div>
+</div>
+
+<!--
+[答え] B。ログインはできている（認証はある）が、そのTodoを見てよいかの確認（認可）が抜けている
 -->
 
 ---
