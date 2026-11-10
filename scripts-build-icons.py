@@ -46,6 +46,18 @@ LOGOS = {
     'render':     ('render.svg',     '#000000'),
     'cloudflare': ('cloudflare.svg', '#F38020'),
     'neon':       ('neon.svg',       '#34D59A'),
+    # 第4回で追加。App Store の公式アプリアイコン（iTunes Search API の artworkUrl を 256px で取得、2026-11-10）
+    'muse':      ('muse.png',    None),   # Muse from Meta（id6760173601）
+    'duet':      ('duet.png',    None),   # Claude Duet by Anthropic（id6803276000）
+    'grokbot':   ('grokbot.png', None),   # Grok Bot（X Corp., id6794501026）
+    'chatgpt':   ('chatgpt.png', None),   # ChatGPT（id6448311069）。dots は ChatGPT の中の機能なのでこれで表す
+    # 第4回で追加。simple-icons 16.28.0 の hex をそのまま使う
+    'crewai':    ('crewai.svg',    '#FF5A50'),
+    'dify':      ('dify.svg',      '#0033FF'),
+    'n8n':       ('n8n.svg',       '#EA4B71'),
+    'langgraph': ('langgraph.svg', '#7FC8FF'),
+    'zapier':    ('zapier.svg',    '#FF4F00'),
+    'make':      ('make.svg',      '#6D00CC'),
 }
 
 # AI を人に見立てるグリフ。頭＋肩の標準的な人型
