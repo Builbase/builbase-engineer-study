@@ -58,6 +58,8 @@ LOGOS = {
     'langgraph': ('langgraph.svg', '#7FC8FF'),
     'zapier':    ('zapier.svg',    '#FF4F00'),
     'make':      ('make.svg',      '#6D00CC'),
+    # 第5回で追加。stablyai/orca の resources/icon.png（MIT、2026-11-25取得、256px）
+    'orca':      ('orca.png',      None),
 }
 
 # AI を人に見立てるグリフ。頭＋肩の標準的な人型
